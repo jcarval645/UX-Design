@@ -4,27 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Development Portfolio: UX/UI Design</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --black: #111;
       --gold: #d4af37;
-      --gray-light: #f9f9f9;
-      --gray-mid: #ececec;
+      --gray-light: #fbfbfb;
+      --gray-mid: #efefef;
       --text-dark: #222;
 
-      /* High-contrast WBS colors */
-      --deliv-bg: #fff1e6;  /* peach/amber */
+      --deliv-bg: #fff1e6;
       --deliv-accent: #ff7a45;
-      --wp-bg: #e6f7ef;    /* mint */
+      --wp-bg: #e6f7ef;
       --wp-accent: #22a06b;
-      --task-bg: #eceaff;  /* periwinkle */
+      --task-bg: #eceaff;
       --task-accent: #6c63ff;
 
-      /* Budget row accents */
       --budget-group-bg: #f7f7f7;
-      --budget-subtotal-bg: #fff8e1; /* soft gold tint */
+      --budget-subtotal-bg: #fff8e1;
       --budget-total-bg: #faf0d0;
     }
 
@@ -46,25 +43,10 @@
       border-bottom: 4px solid var(--gold);
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
+    header h1 { margin: 0; font-size: 2.5rem; font-weight: 600; color: var(--gold); }
+    header p { margin: 0.5rem 0 0; font-size: 1.2rem; color: #f0f0f0; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--gold);
-    }
-
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      color: #f0f0f0;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
 
     .section {
       background: white;
@@ -74,7 +56,6 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       overflow: hidden;
     }
-
     .section summary {
       cursor: pointer;
       font-size: 1.2rem;
@@ -88,29 +69,14 @@
       transition: background 0.3s;
       color: var(--gold);
     }
+    .section summary:hover { background: #eee; }
+    .section summary::after { content: "▶"; font-size: 0.9rem; transition: transform 0.3s ease; color: var(--gold); }
+    details[open] summary::after { transform: rotate(90deg); }
 
-    .section summary:hover {
-      background: #eee;
-    }
-
-    .section summary::after {
-      content: "▶";
-      font-size: 0.9rem;
-      transition: transform 0.3s ease;
-      color: var(--gold);
-    }
-
-    details[open] summary::after {
-      transform: rotate(90deg);
-    }
-
-    /* Consistent text colors */
-    h1, h2, h3, h4 { color: var(--gold); }
+    h1, h2, h3, h4, h5 { color: var(--gold); }
     p, li, td { color: var(--text-dark); }
 
-    .section p, .section div, .section ul, .section table {
-      padding: 1rem 1.5rem;
-    }
+    .section p, .section div, .section ul, .section table { padding: 1rem 1.5rem; }
 
     footer {
       text-align: center;
@@ -122,88 +88,22 @@
       box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
     }
 
-    /* Table styling */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      border-radius: 6px;
-      overflow: hidden;
-    }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; border-radius: 6px; overflow: hidden; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 0.9rem; text-align: left; vertical-align: top; }
+    th { background: var(--black); color: var(--gold); font-size: 1rem; }
 
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-
-    th, td {
-      padding: 0.9rem;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background: var(--black);
-      color: var(--gold);
-      font-size: 1rem;
-    }
-
-    /* Power-Interest Grid */
-    .grid-wrapper {
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      grid-template-rows: 1fr 40px;
-      gap: 0.5rem;
-      align-items: center;
-      justify-items: center;
-      padding: 1rem;
-    }
-
-    .y-axis {
-      grid-row: 1;
-      grid-column: 1;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-weight: 600;
-      color: var(--black);
-    }
-
-    .x-axis {
-      grid-row: 2;
-      grid-column: 2;
-      font-weight: 600;
-      color: var(--black);
-    }
-
-    .grid-container {
-      grid-row: 1;
-      grid-column: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 200px 200px;
-      gap: 1rem;
-      width: 100%;
-    }
-
-    .quadrant {
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
+    .grid-wrapper { display: grid; grid-template-columns: 50px 1fr; grid-template-rows: 1fr 40px; gap: 0.5rem; align-items: center; justify-items: center; padding: 1rem; }
+    .y-axis { grid-row: 1; grid-column: 1; writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 600; color: var(--black); }
+    .x-axis { grid-row: 2; grid-column: 2; font-weight: 600; color: var(--black); }
+    .grid-container { grid-row: 1; grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 1rem; width: 100%; }
+    .quadrant { border-radius: 10px; padding: 1rem; text-align: center; display: flex; flex-direction: column; justify-content: center; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
     .quadrant h4 { color: inherit; margin: 0 0 0.5rem; font-size: 1.2rem; }
-
-    /* Quadrant colors/order */
     .quadrant.green { background: #388e3c; color: white; }   /* TL Keep Satisfied */
     .quadrant.red { background: #d32f2f; color: white; }     /* TR Manage Closely */
     .quadrant.yellow { background: #fbc02d; color: #222; }   /* BL Monitor */
     .quadrant.purple { background: #7b1fa2; color: white; }  /* BR Keep Informed */
 
-    /* WBS color coding */
     tr.wbs.deliverable td { background: var(--deliv-bg); }
     tr.wbs.workpkg td     { background: var(--wp-bg); }
     tr.wbs.task td        { background: var(--task-bg); }
@@ -211,68 +111,22 @@
     tr.wbs.workpkg td:first-child     { border-left: 6px solid var(--wp-accent); }
     tr.wbs.task td:first-child        { border-left: 6px solid var(--task-accent); }
 
-    /* Budget-specific styling */
-    .budget .group td {
-      background: var(--budget-group-bg);
-      font-weight: 700;
-      border-left: 6px solid var(--gold);
-    }
-    .budget .subtotal td {
-      background: var(--budget-subtotal-bg);
-      font-weight: 700;
-    }
-    .budget .grandtotal td {
-      background: var(--budget-total-bg);
-      font-weight: 800;
-    }
+    .budget .group td { background: var(--budget-group-bg); font-weight: 700; border-left: 6px solid var(--gold); }
+    .budget .subtotal td { background: var(--budget-subtotal-bg); font-weight: 700; }
+    .budget .grandtotal td { background: var(--budget-total-bg); font-weight: 800; }
     .num { text-align: right; white-space: nowrap; }
 
-    /* Diagram image + screenshot gallery */
     figure.diagram { padding: 1rem 1.5rem 1.5rem; }
-    .diagram img {
-      width: 100%;
-      height: auto;
-      max-width: 1400px;
-      display: block;
-      margin: 0 auto;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      background: #fff;
-    }
-    .diagram figcaption {
-      text-align: center;
-      font-size: 0.95rem;
-      color: #444;
-      margin-top: 0.6rem;
-    }
+    .diagram img { width: 100%; height: auto; max-width: 1400px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); background: #fff; }
+    .diagram figcaption { text-align: center; font-size: 0.95rem; color: #444; margin-top: 0.6rem; }
 
-    .gallery {
-      padding: 0 1.5rem 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-    .gallery a {
-      display: block;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-    .gallery img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-    .gallery .cap {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-      color: #555;
-      border-top: 1px solid #eee;
-    }
+    .gallery { padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gallery a { display: block; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    .gallery img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .gallery .cap { padding: 0.5rem 0.75rem; font-size: 0.9rem; color: #555; border-top: 1px solid #eee; }
+
+    /* Optional: subtle left bar for DoD headings */
+    .dod h5 { margin: 0.5rem 1.5rem; padding-left: 0.75rem; border-left: 4px solid var(--gold); }
   </style>
 </head>
 <body>
@@ -282,14 +136,12 @@
   </header>
 
   <main>
-    <!-- Project Title & Description -->
     <details class="section" open>
       <summary>Project Title & Description</summary>
       <p><strong>Project Title:</strong> Personal Development Portfolio: UX/UI Design</p>
       <p>Design a prototype to identify a flaw within the university’s mobile app, GETmobile. The final version will be a professional portfolio showcasing the process and an interactive Figma prototype.</p>
     </details>
 
-    <!-- NEW: Project Goal -->
     <details class="section" open>
       <summary>Project Goal</summary>
       <p>To develop professional UX/UI design competency by executing a complete design cycle—conducting user research, creating prototypes in Figma, and performing usability testing—to identify and solve a usability problem in the GETmobile app. This work will be documented in a professional portfolio to demonstrate capabilities to future employers.</p>
@@ -455,9 +307,60 @@
       </div>
     </details>
 
-    <!-- Deliverables and Work Breakdown Structure -->
     <details class="section" open>
       <summary>Deliverables and Work Breakdown Structure</summary>
+
+      <h4>Definition of Done</h4>
+      <div class="dod">
+        <h5>Project Brief &amp; Problem Statement</h5>
+        <ul>
+          <li>Survey receives 10+ responses from GETmobile users</li>
+          <li>Top 3 usability issues identified with data</li>
+          <li>One primary problem selected with clear justification</li>
+          <li>Problem statement is specific and user-focused</li>
+          <li>One-page brief completed in Google Docs with data visualization</li>
+          <li>Document exported and saved as PDF</li>
+        </ul>
+
+        <h5>Current User Map</h5>
+        <ul>
+          <li>All users' steps are documented from app</li>
+          <li>Capture screenshots of each step</li>
+          <li>Take notes on problem areas</li>
+          <li>Highlight issues with color</li>
+          <li>Create a map on FigJam</li>
+          <li>Map exported as PDF</li>
+        </ul>
+
+        <h5>Prototype</h5>
+        <ul>
+          <li>Wireframe completed for all screens</li>
+          <li>High-fidelity mockup created with visual style guide</li>
+          <li>Create an interactive prototype</li>
+          <li>Address the issue from Deliverable 1 with a solution</li>
+          <li>Ensure all UI components are consistent</li>
+          <li>The prototype is ready for testing</li>
+        </ul>
+
+        <h5>Test Report</h5>
+        <ul>
+          <li>3 usability test sessions with classmates</li>
+          <li>Test 3 test scripts and document</li>
+          <li>Take notes based on observations and issues</li>
+          <li>Summarize my findings, recommendations, etc</li>
+          <li>Write a one-page summary report</li>
+          <li>Test report exported as PDF</li>
+        </ul>
+
+        <h5>Portfolio</h5>
+        <ul>
+          <li>All 4 deliverables included as a case study</li>
+          <li>Figma prototype linked with clear instructions</li>
+          <li>Visualizations are high quality and formatted</li>
+          <li>Page is designed well and responsive to other devices</li>
+          <li>Portfolio URL is public</li>
+        </ul>
+      </div>
       <table>
         <tr>
           <th>WBS ID</th>
@@ -516,7 +419,6 @@
       </table>
     </details>
 
-    <!-- Budget -->
     <details class="section" open>
       <summary>Budget</summary>
       <table class="budget">
@@ -553,7 +455,6 @@
       </table>
     </details>
 
-    <!-- Project Methodology Explanation -->
     <details class="section" open>
       <summary>Project Methodology Explanation</summary>
       <p>The diagram shows the four phases: Discover, design and prototype, test, and lastly deliver. It is providing a clear structure for my timeline. The diagram contains two iterative cycles.</p>
@@ -579,7 +480,6 @@
       </figure>
     </details>
 
-    <!-- Project Tool Selection Explanation -->
     <details class="section" open>
       <summary>Project Tool Selection Explanation</summary>
       <p>After evaluating three project tool platforms, I decided to proceed with Smartsheet. Even if my methodology is hybrid iterative rather than predictive, Smartsheet is still the best fit for this project. An advantage of selecting this platform is the ability to upload my Excel WBS sheet directly, removing the process of reentering all of my tasks, which can take up a lot of my time. Smartsheet is also perfect for me personally, since I am not an organized person, and a checkbox will not do the job for me. It allows me to view the entire project timeline.</p>
