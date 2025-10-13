@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Development Portfolio: UX/UI Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111;
+      --gold: #d4af37;
+      --gray-light: #fbfbfb;
+      --gray-mid: #efefef;
+      --text-dark: #222;
+
+      --deliv-bg: #fff1e6;
+      --deliv-accent: #ff7a45;
+      --wp-bg: #e6f7ef;
+      --wp-accent: #22a06b;
+      --task-bg: #eceaff;
+      --task-accent: #6c63ff;
+
+      --budget-group-bg: #f7f7f7;
+      --budget-subtotal-bg: #fff8e1;
+      --budget-total-bg: #faf0d0;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--gray-light), var(--gray-mid));
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111, #333);
+      color: var(--gold);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    header h1 { margin: 0; font-size: 2.5rem; font-weight: 600; color: var(--gold); }
+    header p { margin: 0.5rem 0 0; font-size: 1.2rem; color: #f0f0f0; }
+
+    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+    .section {
+      background: white;
+      border-radius: 14px;
+      margin-bottom: 2rem;
+      border: 1px solid #ddd;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .section summary {
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 1.2rem 1.5rem;
+      background: linear-gradient(to right, #fafafa, #f0f0f0);
+      border-left: 5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s;
+      color: var(--gold);
+    }
+    .section summary:hover { background: #eee; }
+    .section summary::after { content: "▶"; font-size: 0.9rem; transition: transform 0.3s ease; color: var(--gold); }
+    details[open] summary::after { transform: rotate(90deg); }
+
+    h1, h2, h3, h4, h5 { color: var(--gold); }
+    p, li, td { color: var(--text-dark); }
+
+    .section p, .section div, .section ul, .section table { padding: 1rem 1.5rem; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--black);
+      color: var(--gold);
+      margin-top: 2rem;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+    }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; border-radius: 6px; overflow: hidden; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 0.9rem; text-align: left; vertical-align: top; }
+    th { background: var(--black); color: var(--gold); font-size: 1rem; }
+
+    .grid-wrapper { display: grid; grid-template-columns: 50px 1fr; grid-template-rows: 1fr 40px; gap: 0.5rem; align-items: center; justify-items: center; padding: 1rem; }
+    .y-axis { grid-row: 1; grid-column: 1; writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 600; color: var(--black); }
+    .x-axis { grid-row: 2; grid-column: 2; font-weight: 600; color: var(--black); }
+    .grid-container { grid-row: 1; grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 1rem; width: 100%; }
+    .quadrant { border-radius: 10px; padding: 1rem; text-align: center; display: flex; flex-direction: column; justify-content: center; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .quadrant h4 { color: inherit; margin: 0 0 0.5rem; font-size: 1.2rem; }
+    .quadrant.green { background: #388e3c; color: white; }   /* TL Keep Satisfied */
+    .quadrant.red { background: #d32f2f; color: white; }     /* TR Manage Closely */
+    .quadrant.yellow { background: #fbc02d; color: #222; }   /* BL Monitor */
+    .quadrant.purple { background: #7b1fa2; color: white; }  /* BR Keep Informed */
+
+    tr.wbs.deliverable td { background: var(--deliv-bg); }
+    tr.wbs.workpkg td     { background: var(--wp-bg); }
+    tr.wbs.task td        { background: var(--task-bg); }
+    tr.wbs.deliverable td:first-child { border-left: 6px solid var(--deliv-accent); }
+    tr.wbs.workpkg td:first-child     { border-left: 6px solid var(--wp-accent); }
+    tr.wbs.task td:first-child        { border-left: 6px solid var(--task-accent); }
+
+    .budget .group td { background: var(--budget-group-bg); font-weight: 700; border-left: 6px solid var(--gold); }
+    .budget .subtotal td { background: var(--budget-subtotal-bg); font-weight: 700; }
+    .budget .grandtotal td { background: var(--budget-total-bg); font-weight: 800; }
+    .num { text-align: right; white-space: nowrap; }
+
+    figure.diagram { padding: 1rem 1.5rem 1.5rem; }
+    .diagram img { width: 100%; height: auto; max-width: 1400px; display: block; margin: 0 auto; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); background: #fff; }
+    .diagram figcaption { text-align: center; font-size: 0.95rem; color: #444; margin-top: 0.6rem; }
+
+    .gallery { padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .gallery a { display: block; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    .gallery img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .gallery .cap { padding: 0.5rem 0.75rem; font-size: 0.9rem; color: #555; border-top: 1px solid #eee; }
+
+    /* Optional: subtle left bar for DoD headings */
+    .dod h5 { margin: 0.5rem 1.5rem; padding-left: 0.75rem; border-left: 4px solid var(--gold); }
+
+    /* Formal Weekly Report Styling */
+    .report-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-left: 6px solid var(--gold);
+      border-radius: 10px;
+      margin: 1.5rem 1rem;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .report-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .report-header h4 { font-size: 1.3rem; margin: 0; color: var(--gold); }
+    .report-header span { font-size: 0.9rem; color: #666; }
+    .report-section { margin-bottom: 1rem; }
+    .report-section h5 {
+      color: var(--gold);
+      font-size: 1.05rem;
+      margin: 0.5rem 0;
+      border-left: 4px solid var(--gold);
+      padding-left: 0.5rem;
+    }
+    .report-section ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+    .report-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .report-table th, .report-table td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    .report-table th { background: var(--black); color: var(--gold); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Personal Development Portfolio: UX/UI Design</h1>
+    <p>Jasmine Carvalho • Managing IT Projects • Fall 2025</p>
+  </header>
+
+  <main>
+    <details class="section" open>
+      <summary>Project Title & Description</summary>
+      <p><strong>Project Title:</strong> Personal Development Portfolio: UX/UI Design</p>
+      <p>Design a prototype to identify a flaw within the university’s mobile app, GETmobile. The final version will be a professional portfolio showcasing the process and an interactive Figma prototype.</p>
+    </details>
+
+    <details class="section" open>
+      <summary>Project Goal</summary>
+      <p>To develop professional UX/UI design competency by executing a complete design cycle—conducting user research, creating prototypes in Figma, and performing usability testing—to identify and solve a usability problem in the GETmobile app. This work will be documented in a professional portfolio to demonstrate capabilities to future employers.</p>
+    </details>
+
+    <details class="section">
+      <summary>Vision, Mission, & Strategy Alignment</summary>
+      <p><strong>Personal Mission Connection:</strong> This project reflects my mission to “dedicate myself to gaining technical and analytical skills.” It will allow me to gain technical skills like Figma and prototyping, and analytical skills such as user research, to build my future by developing skills that prove my capability.</p>
+      <p><strong>Vision Alignment:</strong> Creating a professional portfolio gives me an idea of what it is like to work in the tech industry to solve real-life problems. It also allows me to make myself a stronger job applicant.</p>
+      <p><strong>Strategic Goal Support:</strong> This project helps me to achieve one of my strategic goals: <em>Improve technical skills</em>. This project is basically a hands-on tutorial. I will watch videos and actively use Figma to build a prototype.</p>
+    </details>
+
+    <details class="section">
+      <summary>Business Case & Justification</summary>
+      <p><strong>Professional Value:</strong></p>
+      <ul>
+        <li><strong>Skills Gained:</strong> I will graduate with new skills in user research, prototyping, and usability testing, complementing my CIS degree.</li>
+        <li><strong>Improving My Portfolio:</strong> This portfolio shows employers that I can apply my knowledge to real-life problems and deliver an outcome.</li>
+      </ul>
+      <p><strong>Personal Value:</strong></p>
+      <ul>
+        <li><strong>Clarity:</strong> It provides an example of exploring a potential career path, reducing the overwhelming options in the tech field.</li>
+        <li><strong>Learning Outcome:</strong> 
+          <ul>
+            <li><em>Technical skills:</em> Figma proficiency, prototyping, and portfolio development.</li>
+            <li><em>Industry Knowledge:</em> Gaining an understanding of user-centered design processes and how they incorporate with technology.</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+
+    <details class="section">
+      <summary>High-Level Scope</summary>
+      <h4>In Scope for Semester-Long Project</h4>
+      <ul>
+        <li>Write a short report regarding the survey I put out on the app’s most significant problems.</li>
+        <li>Pull out one problem that classmates often mention in the survey.</li>
+        <li>Create a simple plan of multiple solutions.</li>
+        <li>Create a prototype on Figma that will fix the issue.</li>
+        <li>Collect feedback from testing the prototype with a few classmates, and write a report on that.</li>
+        <li>Create an online portfolio page displaying the project.</li>
+      </ul>
+
+      <h4>Roadmap Items - Up to 6 Months After Semester Ends</h4>
+      <ul>
+        <li>Expanding the prototype to include other things besides fixing the issue that I fixed.</li>
+        <li>Creating a second round of user testing.</li>
+        <li>Creating a style guide to ensure consistency for all screens.</li>
+        <li>Incorporating code such as HTML.</li>
+        <li>Use portfolio in internship/job applications</li>
+      </ul>
+
+      <h4>Out of Scope</h4>
+      <ul>
+        <li>Building up a real app that we can download.</li>
+        <li>Releasing the app on the Apple App Store or the Google Play Store.</li>
+        <li>Fixing the entire GETmobile app.</li>
+        <li>Collecting data from hundreds of people.</li>
+      </ul>
+    </details>
+
+    <details class="section">
+      <summary>Stakeholder Register</summary>
+      <table>
+        <tr>
+          <th>Stakeholder</th>
+          <th>Category</th>
+          <th>Role/Interest</th>
+          <th>Power</th>
+          <th>Interest</th>
+          <th>Engagement Strategy</th>
+        </tr>
+        <tr>
+          <td>Me</td>
+          <td>Internal</td>
+          <td>Lead the project, ensuring it meets all requirements</td>
+          <td>High</td>
+          <td>High</td>
+          <td>Manage closely - Create a schedule and document my progress</td>
+        </tr>
+        <tr>
+          <td>Professor</td>
+          <td>Internal</td>
+          <td>Evaluate the project and give a grade</td>
+          <td>High</td>
+          <td>High</td>
+          <td>Manage closely - Submit drafts for feedback and make sure they follow the guidelines</td>
+        </tr>
+        <tr>
+          <td>Users</td>
+          <td>External</td>
+          <td>Primary users of the app</td>
+          <td>Medium</td>
+          <td>High</td>
+          <td>Keep Informed - Distribute surveys and create user testing</td>
+        </tr>
+        <tr>
+          <td>University IT</td>
+          <td>External</td>
+          <td>Owns and maintains the app</td>
+          <td>High</td>
+          <td>Low</td>
+          <td>Keep Satisfied - Send my ideas as a suggestion</td>
+        </tr>
+        <tr>
+          <td>Dean of Students</td>
+          <td>External</td>
+          <td>Ensures students are satisfied</td>
+          <td>High</td>
+          <td>Low</td>
+          <td>Monitor - They are not engaged in this; the case can be shared with them as an example</td>
+        </tr>
+        <tr>
+          <td>Associated Students Inc (ASI)</td>
+          <td>External</td>
+          <td>Advocates for student needs</td>
+          <td>Medium</td>
+          <td>Medium</td>
+          <td>Keep Informed - Share a summary of the survey and prototype; they could provide more ideas that align with the students.</td>
+        </tr>
+        <tr>
+          <td>Employers</td>
+          <td>External</td>
+          <td>Will be seeing the portfolio</td>
+          <td>Medium</td>
+          <td>Low</td>
+          <td>Keep Satisfied - Make portfolio case public and professional</td>
+        </tr>
+        <tr>
+          <td>CIS Students</td>
+          <td>Internal</td>
+          <td>Can offer feedback</td>
+          <td>Low</td>
+          <td>Medium</td>
+          <td>Keep Informed - Quick feedback on design and prototypes.</td>
+        </tr>
+      </table>
+    </details>
+
+    <details class="section">
+      <summary>Power-Interest Grid Visual</summary>
+      <div class="grid-wrapper">
+        <div class="y-axis">Power ↑</div>
+        <div class="grid-container">
+          <div class="quadrant green">
+            <h4>Keep Satisfied</h4>
+            <p>University IT, Dean of Students</p>
+          </div>
+          <div class="quadrant red">
+            <h4>Manage Closely</h4>
+            <p>Me, Professor</p>
+          </div>
+          <div class="quadrant yellow">
+            <h4>Monitor</h4>
+            <p>Employers, CIS Students</p>
+          </div>
+          <div class="quadrant purple">
+            <h4>Keep Informed</h4>
+            <p>Users, Associated Students Inc</p>
+          </div>
+        </div>
+        <div class="x-axis">Interest →</div>
+      </div>
+    </details>
+
+    <details class="section" open>
+      <summary>Deliverables and Work Breakdown Structure</summary>
+
+      <h4>Definition of Done</h4>
+      <div class="dod">
+        <h5>Project Brief &amp; Problem Statement</h5>
+        <ul>
+          <li>Survey receives 10+ responses from GETmobile users</li>
+          <li>Top 3 usability issues identified with data</li>
+          <li>One primary problem selected with clear justification</li>
+          <li>Problem statement is specific and user-focused</li>
+          <li>One-page brief completed in Google Docs with data visualization</li>
+          <li>Document exported and saved as PDF</li>
+        </ul>
+
+        <h5>Current User Map</h5>
+        <ul>
+          <li>All users' steps are documented from app</li>
+          <li>Capture screenshots of each step</li>
+          <li>Take notes on problem areas</li>
+          <li>Highlight issues with color</li>
+          <li>Create a map on FigJam</li>
+          <li>Map exported as PDF</li>
+        </ul>
+
+        <h5>Prototype</h5>
+        <ul>
+          <li>Wireframe completed for all screens</li>
+          <li>High-fidelity mockup created with visual style guide</li>
+          <li>Create an interactive prototype</li>
+          <li>Address the issue from Deliverable 1 with a solution</li>
+          <li>Ensure all UI components are consistent</li>
+          <li>The prototype is ready for testing</li>
+        </ul>
+
+        <h5>Test Report</h5>
+        <ul>
+          <li>3 usability test sessions with classmates</li>
+          <li>Test 3 test scripts and document</li>
+          <li>Take notes based on observations and issues</li>
+          <li>Summarize my findings, recommendations, etc</li>
+          <li>Write a one-page summary report</li>
+          <li>Test report exported as PDF</li>
+        </ul>
+
+        <h5>Portfolio</h5>
+        <ul>
+          <li>All 4 deliverables included as a case study</li>
+          <li>Figma prototype linked with clear instructions</li>
+          <li>Visualizations are high quality and formatted</li>
+          <li>Page is designed well and responsive to other devices</li>
+          <li>Portfolio URL is public</li>
+        </ul>
+      </div>
+
+      <table>
+        <tr>
+          <th>WBS ID</th>
+          <th>Level</th>
+          <th>Task/Work Package Name</th>
+          <th>Duration</th>
+          <th>Dependencies (WBS ID &amp; Name)</th>
+        </tr>
+        <tr class="wbs deliverable"><td>1</td><td>Deliverble</td><td>Project Brief &amp; Problem Statement</td><td>7 days</td><td></td></tr>
+        <tr class="wbs workpkg"><td>1.1</td><td>Work Package</td><td>User Research &amp; Data Collection</td><td>3 days</td><td></td></tr>
+        <tr class="wbs task"><td>1.1.1</td><td>Task</td><td>Draft Survey Questions</td><td>1 hour</td><td></td></tr>
+        <tr class="wbs task"><td>1.1.2</td><td>Task</td><td>Distribute survey via Qualtrics</td><td>1 hour</td><td>1.1.1 - Draft Survey Questions</td></tr>
+        <tr class="wbs task"><td>1.1.3</td><td>Task</td><td>Monitor responses and close survey</td><td>2 days</td><td>1.1.2 - Distribute survey wuestions</td></tr>
+        <tr class="wbs workpkg"><td>1.2</td><td>Work Package</td><td>Data Analysis</td><td>2 days</td><td>1.1 User Research &amp; Data collection</td></tr>
+        <tr class="wbs task"><td>1.2.1</td><td>Task</td><td>Complie survey results into a spreadsheet</td><td>1 hour</td><td>1.1.3 Monitor responses and close survey</td></tr>
+        <tr class="wbs task"><td>1.2.2</td><td>Task</td><td>Identify top three issues</td><td>1 day</td><td>1.2.1 Complie survey results into spreadsheet</td></tr>
+        <tr class="wbs task"><td>1.2.3</td><td>Task</td><td>Select the most common problem</td><td>1 hour</td><td>1.2.2 Identify top three issues</td></tr>
+        <tr class="wbs workpkg"><td>1.3</td><td>Work Package</td><td>Create document</td><td>3 days</td><td>1.2 Data Analysis</td></tr>
+        <tr class="wbs task"><td>1.3.1</td><td>Task</td><td>Write Problem Statement</td><td>1 hour</td><td>1.2.3 Select the most common problem</td></tr>
+        <tr class="wbs task"><td>1.3.2</td><td>Task</td><td>Create visuals of survey data</td><td>1 day</td><td>1.2.1 Complie survey results into a spreadsheet</td></tr>
+        <tr class="wbs task"><td>1.3.3</td><td>Task</td><td>Write one page brief in Google Docs</td><td>1 day</td><td>1.3.1 Write Problem Statement ||1.3.2 Create visuals of survey data</td></tr>
+        <tr class="wbs task"><td>1.3.4</td><td>Task</td><td>Export brief as PDF</td><td>1 hour</td><td>1.3.3 Write one page brief in Google Docs</td></tr>
+
+        <tr class="wbs deliverable"><td>2</td><td>Deliverble</td><td>Current User Map</td><td>4 days</td><td>1.0 Project Brief &amp; Problem Statement</td></tr>
+        <tr class="wbs workpkg"><td>2.1</td><td>Work Package</td><td>Document the app flow</td><td>1 day</td><td>1.3.4 Export brief as PDF</td></tr>
+        <tr class="wbs task"><td>2.1.1</td><td>Task</td><td>Perform task in the app, taking screenshots</td><td>1 hour</td><td></td></tr>
+        <tr class="wbs task"><td>2.1.2</td><td>Task</td><td>List user action in Google Docs</td><td>1 day</td><td>2.1.1 Perform task in the app, taking screenshots</td></tr>
+        <tr class="wbs workpkg"><td>2.2</td><td>Work Package</td><td>Build Map</td><td>2 days</td><td>2.1 Document the app flow</td></tr>
+        <tr class="wbs task"><td>2.2.1</td><td>Task</td><td>Choose tool like FigJam</td><td>1 hour</td><td></td></tr>
+        <tr class="wbs task"><td>2.2.2</td><td>Task</td><td>Put together screenshots and timeline</td><td>1 day</td><td>2.2.1 Choose tool ||2.1.1 Taking Screenshots</td></tr>
+        <tr class="wbs task"><td>2.2.3</td><td>Task</td><td>Add notes to highlight top three issues</td><td>1 hour</td><td>2.2.2 Put together screenshots ||2.1.2 List user action</td></tr>
+        <tr class="wbs task"><td>2.2.4</td><td>Task</td><td>Export map as PDF</td><td>1 hour</td><td></td></tr>
+
+        <tr class="wbs deliverable"><td>3</td><td>Deliverable</td><td>Prototype</td><td>7 days</td><td>2.0 Current User Map</td></tr>
+        <tr class="wbs workpkg"><td>3.1</td><td>Work Package</td><td>Low-Fidelity Design</td><td>3 days</td><td>2.0 Current User Map</td></tr>
+        <tr class="wbs task"><td>3.1.1</td><td>Task</td><td>Put together 3 ideas for new user flow</td><td>1 day</td><td>2.2.4 Export map as PDF</td></tr>
+        <tr class="wbs task"><td>3.1.2</td><td>Task</td><td>Select best solution out of three</td><td>1 hour</td><td>3.1.1 3 Ideas</td></tr>
+        <tr class="wbs task"><td>3.1.3</td><td>Task</td><td>Create wireframe in Figma</td><td>4 days</td><td>3.1.2 Best Solution</td></tr>
+        <tr class="wbs workpkg"><td>3.2</td><td>Work Package</td><td>High-Fidelity Visual Design</td><td>4 days</td><td>3.1 Low-Fidelity Design</td></tr>
+        <tr class="wbs task"><td>3.2.1</td><td>Task</td><td>Determine visual style guide (colors, font)</td><td>1 day</td><td>3.1.3 Create wireframe</td></tr>
+        <tr class="wbs task"><td>3.2.2</td><td>Task</td><td>Create reusable UI components (buttons etc)</td><td>3 days</td><td>3.2.1 Visual style guide</td></tr>
+        <tr class="wbs workpkg"><td>3.3</td><td>Work Package</td><td>Protoype and review</td><td>4 days</td><td>3.2 High-Fidelity</td></tr>
+        <tr class="wbs task"><td>3.3.1</td><td>Task</td><td>Conduct review with class peers</td><td>2 days</td><td>3.2 High-Fidelity</td></tr>
+        <tr class="wbs task"><td>3.3.2</td><td>Task</td><td>Make changes based on feedback</td><td>2 days</td><td>3.3.1 Reviews</td></tr>
+
+        <tr class="wbs deliverable"><td>4</td><td>Deliverable</td><td>Test Report</td><td>7 days</td><td>3.0 Prototype</td></tr>
+        <tr class="wbs workpkg"><td>4.1</td><td>Work Package</td><td>Test Preperation</td><td>1 day</td><td>3.0 Prototype</td></tr>
+        <tr class="wbs task"><td>4.1.1</td><td>Task</td><td>Create test script with 3 tasks</td><td>1 hour</td><td>3.3.2 Feedback</td></tr>
+        <tr class="wbs task"><td>4.1.2</td><td>Task</td><td>Ask 3+ classmates as test participants</td><td>1 hour</td><td>4.1.1 Test script</td></tr>
+        <tr class="wbs workpkg"><td>4.2</td><td>Work Package</td><td>Test Exceution</td><td>2 days</td><td>4.1 Test Preperation</td></tr>
+        <tr class="wbs task"><td>4.2.1</td><td>Task</td><td>Usablity test session</td><td>2 days</td><td>4.1.2 Test Participants</td></tr>
+        <tr class="wbs task"><td>4.2.2</td><td>Task</td><td>Take notes on user feedback</td><td>1 day</td><td>4.2.1 Test session</td></tr>
+        <tr class="wbs workpkg"><td>4.3</td><td>Work Package</td><td>Analysis &amp; Report</td><td>1 day</td><td>4.2 Test Exceution</td></tr>
+        <tr class="wbs task"><td>4.3.1</td><td>Task</td><td>Write notes on user feedback into findings</td><td>1 hour</td><td>4.2.2 Notes on user feedback</td></tr>
+        <tr class="wbs task"><td>4.3.2</td><td>Task</td><td>Write one page summary report of findings</td><td>1 day</td><td>4.3.1 Notes into findings</td></tr>
+      </table>
+    </details>
+
+    <!-- NEW: Weekly Status Report (collapsed by default) -->
+    <details class="section">
+      <summary>Weekly Status Report</summary>
+
+      <div class="report-card">
+        <div class="report-header">
+          <h4>📊 Deliverable 1 – Project Brief & Problem Statement</h4>
+          <span>Generated: Monday, September 29, 2025 at 09:46 PM</span>
+        </div>
+        <div class="report-section">
+          <h5>📝 Basic Information</h5>
+          <p><strong>Reporting Period:</strong> Week 7: Sept 29 – Oct 6, 2025</p>
+          <p><strong>Project Name:</strong> Deliverable 1 – Project Brief & Problem Statement</p>
+          <p><strong>Project Goal:</strong></p>
+          <ul>
+            <li>Survey classmates and analyze the data to identify the problem on GETmobile.</li>
+            <li>Write a project brief draft.</li>
+          </ul>
+          <p><strong>Project Manager:</strong> Jasmine Carvalho</p>
+        </div>
+
+        <div class="report-section">
+          <h5>🏥 Project Health</h5>
+          <p>🟢 <strong>ON TRACK</strong></p>
+          <p><strong>Executive Summary:</strong> I have created survey questions and a Google Doc. Next, I will send out the survey to begin the rest of my project.</p>
+        </div>
+
+        <div class="report-section">
+          <h5>✅ Accomplishments This Week</h5>
+          <ul>
+            <li>✓ Drafted survey questions</li>
+            <li>✓ Created Project Brief document on Google Doc</li>
+          </ul>
+        </div>
+
+        <div class="report-section">
+          <h5>📅 Plan for Next Week</h5>
+          <ul>
+            <li>→ Compile project brief into a rough draft</li>
+            <li>→ Start Deliverable 2</li>
+          </ul>
+        </div>
+
+        <div class="report-section">
+          <h5>🎯 Upcoming Milestones</h5>
+          <table class="report-table">
+            <tr><th>Milestone</th><th>Target Date</th><th>Status</th></tr>
+            <tr><td>Deliverable 1 Completed</td><td>10/06/2025</td><td>ON TRACK</td></tr>
+            <tr><td>Finalize Deliverable 1 details</td><td>10/07/2025</td><td>ON TRACK</td></tr>
+            <tr><td>Proceed with Deliverable 2</td><td>10/07/2025</td><td>ON TRACK</td></tr>
+          </table>
+        </div>
+
+        <div class="report-section">
+          <h5>⚠️ Issues & Risks / Mitigations</h5>
+          <p>No issues or risks identified for this reporting period.</p>
+        </div>
+
+        <div class="report-section">
+          <h5>🔄 Changes Since Last Report</h5>
+          <p>No changes occurred since the last reporting period.</p>
+        </div>
+
+        <p style="font-size:0.9rem;color:#666;"><em>Generated by Class Project Status Template — Managing IT Projects Course</em></p>
+      </div>
+
+      <div class="report-card">
+        <div class="report-header">
+          <h4>📊 Deliverable 2 – Current User Map</h4>
+          <span>Generated: Monday, October 6, 2025 at 09:06 PM</span>
+        </div>
+        <div class="report-section">
+          <h5>📝 Basic Information</h5>
+          <p><strong>Reporting Period:</strong> Week 8: Oct 7 – Oct 14, 2025</p>
+          <p><strong>Project Name:</strong> Deliverable 2 – Current User Map</p>
+          <p><strong>Project Goal:</strong></p>
+          <ul>
+            <li>Create a user map documenting the app flow.</li>
+            <li>Identify and highlight issues in the user journey.</li>
+          </ul>
+          <p><strong>Project Manager:</strong> Jasmine Carvalho</p>
+        </div>
+
+        <div class="report-section">
+          <h5>🏥 Project Health</h5>
+          <p>🟢 <strong>ON TRACK</strong></p>
+          <p><strong>Executive Summary:</strong> The survey has been shared and analyzed. A brief report was created. Next week, I will transform findings into a user map documenting the app flow.</p>
+        </div>
+
+        <div class="report-section">
+          <h5>✅ Accomplishments This Week</h5>
+          <ul>
+            <li>✓ Shared survey with classmates</li>
+            <li>✓ Completed a rough draft of the project brief</li>
+            <li>✓ Began work on Deliverable 2</li>
+          </ul>
+        </div>
+
+        <div class="report-section">
+          <h5>📅 Plan for Next Week</h5>
+          <ul>
+            <li>→ Refine project brief</li>
+            <li>→ Complete user map</li>
+            <li>→ Begin Deliverable 3</li>
+          </ul>
+        </div>
+
+        <div class="report-section">
+          <h5>🎯 Upcoming Milestones</h5>
+          <table class="report-table">
+            <tr><th>Milestone</th><th>Target Date</th><th>Status</th></tr>
+            <tr><td>Deliverable 2 Completed</td><td>10/12/2025</td><td>ON TRACK</td></tr>
+            <tr><td>Polish Deliverable 2</td><td>10/13/2025</td><td>ON TRACK</td></tr>
+            <tr><td>Proceed with Deliverable 3</td><td>10/13/2025</td><td>ON TRACK</td></tr>
+          </table>
+        </div>
+
+        <div class="report-section">
+          <h5>⚠️ Issues & Risks / Mitigations</h5>
+          <p>No issues or risks identified for this reporting period.</p>
+        </div>
+
+        <div class="report-section">
+          <h5>🔄 Changes Since Last Report</h5>
+          <p>No changes occurred since the last reporting period.</p>
+        </div>
+
+        <p style="font-size:0.9rem;color:#666;"><em>Generated by Class Project Status Template — Managing IT Projects Course</em></p>
+      </div>
+    </details>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Jasmine Carvalho — Personal Development Portfolio</p>
+  </footer>
+</body>
+</html>
