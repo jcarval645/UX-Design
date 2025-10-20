@@ -1,234 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Charter - Personal Development Portfolio: UX/UI Design</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: white;
-      color: black;
-      display: flex;
-      scroll-behavior: smooth;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 250px;
-      background-color: #2f2f2f;
-      color: white;
-      height: 100vh;
-      position: fixed;
-      padding: 20px;
-      box-sizing: border-box;
-      transition: transform 0.3s ease-in-out;
-      overflow-y: auto;
-    }
-
-    .sidebar.collapsed {
-      transform: translateX(-250px);
-    }
-
-    .toggle-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: gold;
-      border: none;
-      color: black;
-      padding: 10px 15px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s;
-    }
-
-    .toggle-btn:hover {
-      background-color: #e6b800;
-    }
-
-    .sidebar h2 {
-      color: gold;
-      font-size: 1.2em;
-      border-bottom: 1px solid gold;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
-
-    .sidebar a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      margin: 10px 0;
-      font-size: 0.95em;
-      transition: color 0.3s;
-    }
-
-    .sidebar a:hover {
-      color: gold;
-    }
-
-    /* Main Content */
-    .content {
-      margin-left: 270px;
-      padding: 40px;
-      flex-grow: 1;
-      transition: margin-left 0.3s ease-in-out;
-    }
-
-    .collapsed + .content {
-      margin-left: 40px;
-    }
-
-    header {
-      background: linear-gradient(90deg, gold, black);
-      color: white;
-      padding: 40px 20px;
-      border-radius: 8px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    section {
-      margin-top: 40px;
-    }
-
-    section h2 {
-      color: gold;
-      border-bottom: 2px solid gold;
-      padding-bottom: 5px;
-      font-size: 1.4em;
-    }
-
-    section h3 {
-      color: black;
-      margin-top: 15px;
-      font-size: 1.1em;
-    }
-
-    section p {
-      margin-top: 8px;
-      line-height: 1.6em;
-    }
-
-    ul {
-      margin-top: 10px;
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-    }
-
-    /* Screenshot gallery */
-    .screenshot-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .screenshot-gallery a {
-      flex: 1 1 calc(33.33% - 10px);
-      text-align: center;
-    }
-
-    .screenshot-gallery img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .screenshot-gallery img:hover {
-      transform: scale(1.03);
-    }
-
-    .caption {
-      font-style: italic;
-      color: #555;
-      font-size: 0.9em;
-      text-align: center;
-      margin-top: 5px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Charter - Personal Development Portfolio: UX/UI Design (Final)</title>
+<style>
+  :root{ --gold:#d4af37; --gray:#2f2f2f; --black:#000; --white:#fff; --lightgold:#fff8dc; --lightgray:#f0f0f0; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--white);color:var(--black);display:flex;scroll-behavior:smooth;}
+  .sidebar{width:270px;background:var(--gray);color:var(--white);height:100vh;position:fixed;inset:0 auto 0 0;padding:20px;overflow-y:auto;transition:transform .3s ease-in-out;border-right:2px solid #1d1d1d;}
+  .sidebar h2{color:var(--gold);font-size:1.1rem;padding-bottom:6px;border-bottom:1px solid var(--gold);margin:0 0 12px;}
+  .sidebar a{display:block;padding:8px 6px;margin:4px 0;text-decoration:none;color:var(--white);border-radius:6px;}
+  .sidebar a:hover{color:var(--gold);background:#3a3a3a;}
+  .toggle-btn{position:fixed;top:16px;left:16px;background:var(--gold);color:var(--black);border:none;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer;z-index:1001;}
+  .sidebar.collapsed{transform:translateX(-100%);}
+  .content{margin-left:290px;padding:42px 42px 80px;width:100%;transition:margin-left .3s ease-in-out;}
+  .sidebar.collapsed + .content{margin-left:60px;}
+  header{background:linear-gradient(90deg,var(--gold),var(--black));color:var(--white);padding:38px 24px;border-radius:12px;}
+  header h1{margin:0 0 8px 0;}
+  .info{background:#f2f2f2;border-left:6px solid var(--gold);padding:16px;margin-top:18px;border-radius:6px;}
+  section{margin-top:48px;}
+  section h2{color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:12px;}
+  section h3{margin:14px 0 6px;}
+  p{line-height:1.6;margin:8px 0;}
+  ul{margin:10px 0 10px 22px;}
+  li{margin:6px 0;}
+  table{width:100%;border-collapse:collapse;margin:12px 0 22px;border:1px solid #ccc;font-size:.95em;}
+  th,td{border:1px solid #ccc;padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:var(--gold);color:var(--black);font-weight:bold;}
+  .deliverable-row td{background:var(--lightgold);font-weight:bold;}
+  .workpackage-row td{background:var(--lightgray);}
+  .task-row td{background:var(--white);}
+  .img-wrap{background:#f9f9f9;border:1px solid #ddd;border-left:6px solid var(--gold);padding:16px;border-radius:8px;text-align:center;margin-top:12px;}
+  .img-wrap img{max-width:100%;height:auto;border-radius:8px;}
+  .caption{font-style:italic;color:#555;margin-top:6px;}
+  /* Power-Interest grid */
+  .pi-grid-wrap{margin-top:14px;}
+  .pi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .quad{border:2px solid var(--gold);border-radius:10px;background:#fff;overflow:hidden;}
+  .quad-header{background:var(--gray);color:var(--white);padding:10px 12px;font-weight:700;font-size:1rem;}
+  .quad-sub{padding:6px 12px;background:#f6f6f6;border-bottom:1px solid #e5e5e5;font-style:italic;color:#555;}
+  .quad-body{padding:12px;}
+</style>
 </head>
 <body>
+<button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+<nav class="sidebar" id="sidebar">
+  <h2>Table of Contents</h2>
+  <a href="#title">Project Title</a>
+  <a href="#description">Project Description</a>
+  <a href="#goal">Project Goal</a>
+  <a href="#alignment">Vision, Mission, & Strategy Alignment</a>
+  <a href="#business">Business Case & Justification</a>
+  <a href="#scope">High-Level Scope</a>
+  <a href="#stakeholders">Stakeholder Register</a>
+  <a href="#deliverables">Deliverables and Work Breakdown Structure</a>
+  <a href="#budget">Budget</a>
+  <a href="#methodology">Project Methodology Explanation</a>
+  <a href="#tools">Project Tool Selection Explanation</a>
+</nav>
 
-  <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+<div class="content">
+  <header id="title">
+    <h1>Personal Development Portfolio: UX/UI Design</h1>
+    <div class="info">
+      <p><strong>Student Name:</strong> Jasmine Carvalho</p>
+      <p><strong>Course:</strong> Managing IT Projects</p>
+      <p><strong>Semester:</strong> Fall 2025</p>
+    </div>
+  </header>
 
-  <!-- Sidebar -->
-  <nav class="sidebar" id="sidebar">
-    <h2>Table of Contents</h2>
-    <a href="#title">Project Title</a>
-    <a href="#description">Project Description</a>
-    <a href="#goal">Project Goal</a>
-    <a href="#alignment">Vision, Mission, & Strategy Alignment</a>
-    <a href="#business-case">Business Case & Justification</a>
-    <a href="#scope">High-Level Scope</a>
-    <a href="#stakeholders">Stakeholder Register</a>
-    <a href="#deliverables">Deliverables & WBS</a>
-    <a href="#budget">Budget</a>
-    <a href="#methodology">Project Methodology</a>
-    <a href="#tools">Project Tool Selection Explanation</a>
-  </nav>
+  <section id="description">
+    <h2>Project Description</h2>
+    <p>Design a prototype to identify a flaw within the university’s mobile app, GETmobile. The final version will be a professional portfolio showcasing the process and an interactive Figma prototype.</p>
+  </section>
 
-  <!-- Main Content -->
-  <div class="content">
-    <header id="title">
-      <h1>Personal Development Portfolio: UX/UI Design</h1>
-    </header>
+  <section id="goal">
+    <h2>Project Goal</h2>
+    <p>To develop professional UX/UI design competency by executing a complete design cycle—conducting user research, creating prototypes in Figma, and performing usability testing—to identify and solve a usability problem in the GETmobile app. This work will be documented in a professional portfolio to demonstrate capabilities to future employers.</p>
+  </section>
 
-    <!-- Project Tool Selection Section -->
-    <section id="tools">
-      <h2>Project Tool Selection Explanation</h2>
+  <section id="alignment">
+    <h2>Vision, Mission, & Strategy Alignment</h2>
+    <h3>Personal Mission Connection:</h3>
+    <p>This project reflects my mission to “dedicate myself to gaining technical and analytical skills.” It will allow me to gain technical skills like Figma and prototyping, and analytical skills such as user research, to build my future by developing skills that prove my capability. </p>
+    <h3>Vision Alignment:</h3>
+    <p>Creating a professional portfolio gives me an idea of what it is like to work in the tech industry to solve real-life problems. It also allows me to make myself a stronger job applicant.</p>
+    <h3>Strategic Goal Support:</h3>
+    <p>This project helps me to achieve one of my strategic goals: 
+Improve technical skills: This project is basically a hands-on tutorial. I will watch videos and actively use Figma to build a prototype. </p>
+  </section>
 
-      <p>
-        After evaluating three project management platforms, I decided to proceed with <strong>Smartsheet</strong>.
-        Even though my project methodology is hybrid iterative rather than predictive, Smartsheet remains the best fit for this project.
-      </p>
+  <section id="business">
+    <h2>Business Case & Justification</h2>
+    <p>Professioanl Value: </p>
+    <ul>
+      <li><strong>Skills Gained:</strong> I will graduate with new skills in user research, prototyping, and usability testing, complementing my CIS degree. </li>
+      <li><strong>Improving My Portfolio:</strong> This portfolio shows employers that I can apply my knowledge to real-life problems and deliver an outcome.</li>
+    </ul>
+    <p>Personal Value: </p>
+    <ul>
+      <li><strong>Clarity:</strong> It provides an example of exploring a potential career path, reducing the overwhelming options in the tech field. </li>
+    </ul>
+    <p>Learning Outcome: </p>
+    <ul>
+      <li><strong>Technical skills:</strong> Figma proficiency, prototyping, and portfolio development. </li>
+      <li><strong>Industry Knowledge:</strong> Gaining an understanding of user-centered design processes and how they incorporate with technology</li>
+    </ul>
+  </section>
 
-      <p>
-        One major advantage of choosing Smartsheet is its ability to <strong>upload Excel WBS sheets directly</strong>,
-        eliminating the time-consuming process of re-entering all tasks manually. It streamlines data import and allows efficient
-        tracking of dependencies and milestones.
-      </p>
+  <section id="scope">
+    <h2>High-Level Scope</h2>
+    <h3>In Scope for Semester-Long Project</h3>
+    <ul>
+      <li>Write a short report regarding the survey I put out on the app’s most significant problems.</li>
+      <li>Pull out one problem that classmates often mention in the survey</li>
+      <li>Create a simple plan of multiple solutions</li>
+      <li>Create a prototype on Figma that will fix the issue</li>
+      <li>Collect feedback from testing the prototype with a few classmates, and write a report on that</li>
+      <li>Create an online portfolio page displaying the project</li>
+    </ul>
+    <h3>Roadmap Items - Up to 6 Months After Semester Ends</h3>
+    <ul>
+      <li>Expanding the prototype to include other things besides fixing the issue that I fixed</li>
+      <li>Creating a second round of user testing</li>
+      <li>Creating a style guide to ensure consistency for all screens. </li>
+      <li>Incorporating code such as HTML </li>
+    </ul>
+    <h3>Out of Scope</h3>
+    <ul>
+      <li>Building up a real app that we can download</li>
+      <li>Releasing the app on the Apple App Store or the Google Play Store</li>
+      <li>Fixing the entire GETmobile app</li>
+      <li>Collecting data from hundreds of people</li>
+    </ul>
+  </section>
 
-      <p>
-        Personally, Smartsheet fits my workflow well since I am not naturally organized, and checkboxes alone do not provide enough
-        structure. The platform’s <strong>timeline and Gantt chart visualization</strong> help me stay on track by viewing the project progress at a glance.
-      </p>
+  <section id="stakeholders">
+    <h2>Stakeholder Register</h2>
+    <h3>Stakeholder Identification</h3>
+    <table>
+      <tr>
+        <th>Stakeholder</th>
+        <th>Catergory</th>
+        <th>Role/Interest</th>
+        <th>Power</th>
+        <th>Interest</th>
+        <th>Engagement Strategy </th>
+      </tr>
+      <tr><td>Me</td><td>Internal</td><td>Lead the project, ensuring it meets all requirements</td><td>High </td><td>High</td><td>Manage closely - Create a schedule and document my progress</td></tr>
+      <tr><td>Professor</td><td>Internal</td><td>Evaluate the project and give a grade</td><td>High</td><td>High</td><td>Manage closely - Submit drafts for feedback and make sure they follow the guidelines </td></tr>
+      <tr><td>Users</td><td>External</td><td>Primary users of the app</td><td>Medium</td><td>High</td><td>Keep Informed - Distribute surveys and create user testing</td></tr>
+      <tr><td>University IT</td><td>External </td><td>Owns and maintains the app</td><td>High</td><td>Low</td><td>Keep Satisfied - Send my ideas as a suggestion </td></tr>
+      <tr><td>Dean of Students</td><td>External</td><td>Ensures students are satisfied</td><td>High</td><td>Low</td><td>Monitor - They are not engaged in this; the case can be shared with them as an example</td></tr>
+      <tr><td>Associated Students Inc (ASI)</td><td>External</td><td>Advocates for student needs</td><td>Medium</td><td>Medium</td><td>Keep Informed - Share a summary of the survey and prototype; they could provide more ideas that align with the students.</td></tr>
+      <tr><td>Employeers</td><td>External</td><td>Will be seeing the portfolio</td><td>Medium</td><td>Low</td><td>Keep Satisfied - Make portfolio case public and professional</td></tr>
+      <tr><td>CIS students</td><td>Internal</td><td>Can offer feedback</td><td>Low</td><td>Medium</td><td>Keep Informed - Quick feedback on design and prototypes. </td></tr>
+    </table>
 
-      <div class="screenshot-gallery">
-        <a href="https://i.postimg.cc/W1Q2s02j/1.jpg" target="_blank">
-          <img src="https://i.postimg.cc/W1Q2s02j/1.jpg" alt="Smartsheet Screenshot 1">
-        </a>
-        <a href="https://i.postimg.cc/JhVWfmqr/2.jpg" target="_blank">
-          <img src="https://i.postimg.cc/JhVWfmqr/2.jpg" alt="Smartsheet Screenshot 2">
-        </a>
-        <a href="https://i.postimg.cc/sXKdGWR7/3.jpg" target="_blank">
-          <img src="https://i.postimg.cc/sXKdGWR7/3.jpg" alt="Smartsheet Screenshot 3">
-        </a>
+    <div class="pi-grid-wrap">
+      <h3>Power-Interest Grid Visual: </h3>
+      <div class="pi-grid">
+        <div class="quad">
+          <div class="quad-header">Keep Statsfied</div>
+          <div class="quad-sub">(High Power, Low Interest)</div>
+          <div class="quad-body"><p>University IT<br/>Dean of Students</p></div>
+        </div>
+        <div class="quad">
+          <div class="quad-header">Manage Closely</div>
+          <div class="quad-sub">(High Power, High Interest)</div>
+          <div class="quad-body"><p>Me<br/>Professor </p></div>
+        </div>
+        <div class="quad">
+          <div class="quad-header">Monitor </div>
+          <div class="quad-sub">(Low power, Low Interest)</div>
+          <div class="quad-body"><p>Employers<br/>CIS Students</p></div>
+        </div>
+        <div class="quad">
+          <div class="quad-header">Keep Informed </div>
+          <div class="quad-sub">(Low Power, High Interest)</div>
+          <div class="quad-body"><p>Users<br/>Associated Students Inc</p></div>
+        </div>
       </div>
-      <p class="caption">Figure: Smartsheet interface views used for timeline tracking and WBS integration.</p>
-    </section>
+    </div>
+  </section>
 
-  </div>
+  <section id="deliverables">
+    <h2>Deliverables and Work Breakdown Structure</h2>
 
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('collapsed');
-    }
-  </script>
+    <h3>Deliverables and Definition of Done</h3>
+    <table>
+      <tr><th>Deliverable </th><th>Definition of Done</th></tr>
+      <tr>
+        <td>Project Brief & Problem Statement</td>
+        <td>
+          Survey receives 10+ responses from GETmobile users<br/>
+          Top 3 usability issues identified with data<br/>
+          One primary problem selected with clear justification<br/>
+          Problem statement is specific and user-focused<br/>
+          One-page brief completed in Google Docs with data visualization <br/>
+          Document exported and saved as PDF
+        </td>
+      </tr>
+      <tr>
+        <td>Current User Map</td>
+        <td>
+          All users' steps are documented from app<br/>
+          Capture screenshots of each step<br/>
+          Take notes on problem areas<br/>
+          Highlight issues with color<br/>
+          Create a map on FigJam<br/>
+          Map exported as PDF
+        </td>
+      </tr>
+      <tr>
+        <td>Protoype</td>
+        <td>
+          Wireframe completed for all screens<br/>
+          High-fidelity mockup created with visual style guide<br/>
+          Create an interactive prototype <br/>
+          Address the issue from Deliverable 1 with a solution<br/>
+          Ensure all UI components are consistent<br/>
+          The prototype is ready for testing
+        </td>
+      </tr>
+      <tr>
+        <td>Test Report</td>
+        <td>
+          3 usability test sessions with classmates<br/>
+          Test 3 test scripts and document<br/>
+          Take notes based on observations and issues<br/>
+          Summarize my findings, recommendations, etc<br/>
+          Write a one-page summary report <br/>
+          Test report exported as PDF
+        </td>
+      </tr>
+      <tr>
+        <td>Portfolio</td>
+        <td>
+          All 4 deliverables included as a case study<br/>
+          Figma prototype linked with clear instructions<br/>
+          Visualizations are high quality and formatted<br/>
+          Page is designed well and responsive to other devices<br/>
+          Portfolio URL is public
+        </td>
+      </tr>
+    </table>
 
+    <h3>WBS</h3>
+    <table>
+      <tr>
+        <th>WBS ID</th><th>Level</th><th>Task/Work Package Name</th><th>Duration</th><th>Dependencies (WBS ID & Name)</th>
+      </tr>
+      <tr class="deliverable-row"><td>1</td><td>Deliverble</td><td>Project Brief & Problem Statement </td><td>7 days</td><td> </td></tr>
+      <tr class="workpackage-row"><td>1.1</td><td>Work Package</td><td>User Research & Data Collection</td><td>3 days</td><td> </td></tr>
+      <tr class="task-row"><td>1.1.1</td><td>Task</td><td>Draft Survey Questions</td><td>1 hour</td><td> </td></tr>
+      <tr class="task-row"><td>1.1.2</td><td>Task</td><td>Distribute survey via Qualtrics</td><td>1 hour</td><td>1.1.1 - Draft Survey Questions</td></tr>
+      <tr class="task-row"><td>1.1.3</td><td>Task</td><td>Monitor responses and close the survey</td><td>2 days</td><td>1.1.2 - Distribute survey questions</td></tr>
+      <tr class="workpackage-row"><td>1.2</td><td>Work Package</td><td>Data Analysis</td><td>2 days</td><td>1.1 User Research & Data Collection</td></tr>
+      <tr class="task-row"><td>1.2.1</td><td>Task</td><td>Compile survey results into a spreadsheet</td><td>1 hour</td><td>1.1.3 Monitor responses and close survey</td></tr>
+      <tr class="task-row"><td>1.2.2</td><td>Task</td><td>Identify the top three issues</td><td>1 day</td><td>1.2.1 Compile survey results into a spreadsheet</td></tr>
+      <tr class="task-row"><td>1.2.3</td><td>Task</td><td>Select the most common problem</td><td>1 hour</td><td>1.2.2 Identify top three issues</td></tr>
+      <tr class="workpackage-row"><td>1.3</td><td>Work Package</td><td>Create document</td><td>3 days</td><td>1.2 Data Analysis</td></tr>
+      <tr class="task-row"><td>1.3.1</td><td>Task</td><td>Write Problem Statement</td><td>1 hour</td><td>1.2.3 Select the most common problem</td></tr>
+      <tr class="task-row"><td>1.3.2</td><td>Task</td><td>Create visuals of survey data</td><td>1 day</td><td>1.2.1 Complie survey results into a spreadsheet</td></tr>
+      <tr class="task-row"><td>1.3.3</td><td>Task</td><td>Write one page brief in Google Docs</td><td>1 day</td><td>1.3.1 Write Problem Statement ||1.3.2 Create visuals of survey data</td></tr>
+      <tr class="task-row"><td>1.3.4</td><td>Task</td><td>Export brief as PDF</td><td>1 hour</td><td>1.3.3 Write one page brief in Google Docs</td></tr>
+      <tr class="deliverable-row"><td>2</td><td>Deliverble</td><td>Current User Map</td><td>4 days</td><td>1.0 Project Brief & Problem Statement</td></tr>
+      <tr class="workpackage-row"><td>2.1</td><td>Work Package</td><td>Document the app flow</td><td>1 day</td><td>1.3.4 Export brief as PDF</td></tr>
+      <tr class="task-row"><td>2.1.1</td><td>Task</td><td>Perform task in the app, taking screenshots</td><td>1 hour</td><td> </td></tr>
+      <tr class="task-row"><td>2.1.2</td><td>Task </td><td>List user action in Google Docs</td><td>1 day</td><td>2.1.1 Perform task in the app, taking screenshots</td></tr>
+      <tr class="workpackage-row"><td>2.2</td><td>Work Package</td><td>Build Map</td><td>2 days</td><td>2.1 Document the app flow</td></tr>
+      <tr class="task-row"><td>2.2.1</td><td>Task</td><td>Choose tool like FigJam</td><td>1 hour</td><td> </td></tr>
+      <tr class="task-row"><td>2.2.2</td><td>Task</td><td>Put together screenshots and timeline</td><td>1 day</td><td>2.2.1 Choose tool ||2.1.1 Taking Screenshots</td></tr>
+      <tr class="task-row"><td>2.2.3</td><td>Task</td><td>Add notes to highlight top three issues</td><td>1 hour</td><td>2.2.2 Put together screenshots ||2.1.2 List user action</td></tr>
+      <tr class="task-row"><td>2.2.4</td><td>Task</td><td>Export map as PDF</td><td>1 hour</td><td> </td></tr>
+      <tr class="deliverable-row"><td>3</td><td>Deliverable</td><td>Prototype</td><td>7 days</td><td>2.0 Current User Map</td></tr>
+      <tr class="workpackage-row"><td>3.1</td><td>Work Package</td><td>Low-Fidelity Design</td><td>3 days</td><td>2.0 Current User Map</td></tr>
+      <tr class="task-row"><td>3.1.1</td><td>Task</td><td>Put together 3 ideas for new user flow</td><td>1 day</td><td>2.2.4 Export map as PDF</td></tr>
+      <tr class="task-row"><td>3.1.2</td><td>Task</td><td>Select best solution out of three</td><td>1 hour</td><td>3.1.1 3 Ideas</td></tr>
+      <tr class="task-row"><td>3.1.3</td><td>Task</td><td>Create wireframe in Figma</td><td>4 days</td><td>3.1.2 Best Solution</td></tr>
+      <tr class="workpackage-row"><td>3.2</td><td>Work Package</td><td>High-Fidelity Visual Design</td><td>4 days</td><td>3.1 Low-Fidelity Design</td></tr>
+      <tr class="task-row"><td>3.2.1</td><td>Task</td><td>Determine visual style guide (colors, font)</td><td>1 day</td><td>3.1.3 Create wireframe</td></tr>
+      <tr class="task-row"><td>3.2.2</td><td>Task</td><td>Create reusable UI components (buttons etc)</td><td>3 days</td><td>3.2.1 Visual style guide</td></tr>
+      <tr class="workpackage-row"><td>3.3</td><td>Work Package</td><td>Protoype and review</td><td>4 days</td><td>3.2 High-Fidelity</td></tr>
+      <tr class="task-row"><td>3.3.1</td><td>Task</td><td>Conduct review with class peers</td><td>2 days</td><td>3.2 High-Fidelity</td></tr>
+      <tr class="task-row"><td>3.3.2</td><td>Task</td><td>Make changes based on feedback</td><td>2 days</td><td>3.3.1 Reviews</td></tr>
+      <tr class="deliverable-row"><td>4</td><td>Deliverable</td><td>Test Report</td><td>7 days</td><td>3.0 Prototype</td></tr>
+      <tr class="workpackage-row"><td>4.1</td><td> Work Package</td><td>Test Preperation</td><td>1 day</td><td>3.0 Prototype</td></tr>
+      <tr class="task-row"><td>4.1.1</td><td> Task</td><td>Create test script with 3 tasks</td><td>1 hour</td><td>3.3.2 Feedback</td></tr>
+      <tr class="task-row"><td>4.1.2</td><td> Task</td><td>Ask 3+ classmates as test participants</td><td>1 hour</td><td>4.1.1 Test script</td></tr>
+      <tr class="workpackage-row"><td>4.2</td><td>Work Package</td><td>Test Exceution</td><td>2 days</td><td>4.1 Test Preperation</td></tr>
+      <tr class="task-row"><td>4.2.1</td><td> Task</td><td>Usablity test session</td><td>2 days</td><td>4.1.2 Test Participants</td></tr>
+      <tr class="task-row"><td>4.2.2</td><td> Task</td><td>Take notes on user feedback</td><td>1 day</td><td>4.2.1 Test session</td></tr>
+      <tr class="workpackage-row"><td>4.3</td><td> Work Package</td><td>Analysis & Report</td><td>1 day</td><td>4.2 Test Exceution</td></tr>
+      <tr class="task-row"><td>4.3.1</td><td> Task</td><td>Write notes on user feedback into findings</td><td>1 hour</td><td>4.2.2 Notes on user feedback</td></tr>
+      <tr class="task-row"><td>4.3.2</td><td> Task</td><td>Write one page summary report of findings</td><td>1 day</td><td>4.3.1 Notes into findings</td></tr>
+      <tr class="deliverable-row"><td>5</td><td>Deliverable</td><td>Portfolio</td><td>5 days</td><td>4.0 Test report</td></tr>
+      <tr class="workpackage-row"><td>5.1</td><td> Work Package</td><td>Content Creation</td><td>3 days</td><td>4.0 Test report</td></tr>
+      <tr class="task-row"><td>5.1.1</td><td> Task</td><td>Gather all project materials (PDF, map etc)</td><td>1 day</td><td>4.3.2 Report on findings</td></tr>
+      <tr class="task-row"><td>5.1.2</td><td> Task</td><td>Write caste study</td><td>2 days</td><td>5.1.1 Materials</td></tr>
+      <tr class="workpackage-row"><td>5.2</td><td> Work Package</td><td>Publication</td><td>4 days</td><td>5.1 Content Creation</td></tr>
+      <tr class="task-row"><td>5.2.1</td><td> Task</td><td>Choose Portfolio platform</td><td>1 hour</td><td> </td></tr>
+      <tr class="task-row"><td>5.2.2</td><td> Task</td><td>Build case study page</td><td>3 days</td><td>5.2.1 Choose Platform || 5.1.2 Case Study</td></tr>
+      <tr class="task-row"><td>5.2.3</td><td> Task</td><td>Publish page to URL</td><td>1 hour</td><td> </td></tr>
+    </table>
+  </section>
+
+  <section id="budget">
+    <h2>Budget </h2>
+    <table>
+      <tr><th>Cost Item</th><th>Quantity/Hours</th><th>Rate/Price</th><th>Total Cost</th></tr>
+      <tr><td colspan="4"><strong>LABOR COSTS</strong></td></tr>
+      <tr><td>UX Researcher</td><td>15</td><td>$54.00</td><td>$810.00</td></tr>
+      <tr><td>UX Designer</td><td>50</td><td>$54.00</td><td>$2,700.00</td></tr>
+      <tr><td>Project Manager</td><td>10</td><td>$53.00</td><td>$530.00</td></tr>
+      <tr><td>Usability Tester</td><td>8</td><td>$51.00</td><td>$408.00</td></tr>
+      <tr><td colspan="3"><strong>LABOR SUBTOTAL</strong></td><td>4448</td></tr>
+
+      <tr><td colspan="4"><strong>EQUIPMENT/SOFTWARE</strong></td></tr>
+      <tr><td>Figma Pro Plan</td><td>3 months </td><td>$16.00</td><td>$48.00</td></tr>
+      <tr><td colspan="3"><strong>EQUIPMENT/SOFTWARE SUBTOTAL</strong></td><td>48</td></tr>
+
+      <tr><td colspan="4"><strong>MATERIALS</strong></td></tr>
+      <tr><td>Stock Images/Media</td><td>1</td><td>$50.00</td><td>$50.00</td></tr>
+      <tr><td colspan="3"><strong>MATERIALS SUBTOTAL</strong></td><td>50</td></tr>
+
+      <tr><td colspan="4"><strong>SERVICES</strong></td></tr>
+      <tr><td>Cloud Storage (Google Drive)</td><td>3 months</td><td>$19.99</td><td>$59.97</td></tr>
+      <tr><td colspan="3"><strong>SERVICES SUBTOTAL</strong></td><td>59.97</td></tr>
+
+      <tr><td colspan="3"><strong>SUBTOTAL DIRECT COSTS</strong></td><td>4,605.97</td></tr>
+      <tr><td colspan="3"><strong>Contingency Reserve (%)</strong></td><td>20%</td></tr>
+      <tr><td colspan="3"><strong></strong></td><td>921.19</td></tr>
+      <tr><td colspan="3"><strong>TOTAL PROJECT BUDGET</strong></td><td>5527.16</td></tr>
+    </table>
+  </section>
+
+  <section id="methodology">
+    <h2>Project Methodology Explanation</h2>
+    <p>The diagram shows the four phases: Discover, design and prototype, test, and lastly deliver. It is providing a clear structure for my timeline. The diagram contains two iterative cycles. The first cycle covers: </p>
+    <ul>
+      <li>Creating a wireframe</li>
+      <li>Get feedback from classmates</li>
+      <li>Go over it until I am satisfied with the design</li>
+    </ul>
+    <p>The second cycle covers: </p>
+    <ul>
+      <li>Test high-fidelity prototype with users</li>
+      <li>Analyze data</li>
+      <li>Make revisions based on analyzation </li>
+    </ul>
+    <p>Each phase ends with a deliverable as outlined on my Work Breakdown Structure sheet. The design visually highlights how feedback is key to the project, leading to revisions and improvements, ensuring the final portfolio is perfect. </p>
+    <h3>Project Methodology Diagram</h3>
+    <div class="img-wrap">
+      <a href="https://i.postimg.cc/JnFM0JLf/Methodology.jpg" target="_blank">
+        <img src="https://i.postimg.cc/JnFM0JLf/Methodology.jpg" alt="Methodology.jpg"/>
+      </a>
+      <div class="caption">https://i.postimg.cc/JnFM0JLf/Methodology.jpg</div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <h2>Project Tool Selection Explanation </h2>
+    <p>Project Tool Selection Explanation 
+After evaluating three project tool platforms, I decided to proceed with Smartsheet. Even if my methodology is hybrid iterative rather than predictive, Smartsheet is still the best fit for this project. An advantage of selecting this platform is the ability to upload my Excel WBS sheet directly, removing the process of reentering all of my tasks, which can take up a lot of my time. Smartsheet is also perfect for me personally, since I am not an organized person, and a checkbox will not do the job for me. It allows me to view the entire project timeline. 
+Screenshots
+https://i.postimg.cc/W1Q2s02j/1.jpg
+https://i.postimg.cc/JhVWfmqr/2.jpg 
+https://i.postimg.cc/sXKdGWR7/3.jpg </p>
+    <h3>Screenshots</h3>
+    <div class="img-wrap">
+      <a href="https://i.postimg.cc/W1Q2s02j/1.jpg" target="_blank">
+        <img src="https://i.postimg.cc/W1Q2s02j/1.jpg" alt="1.jpg"/>
+      </a>
+      <div class="caption">https://i.postimg.cc/W1Q2s02j/1.jpg</div>
+    </div>
+    <div class="img-wrap">
+      <a href="https://i.postimg.cc/JhVWfmqr/2.jpg" target="_blank">
+        <img src="https://i.postimg.cc/JhVWfmqr/2.jpg" alt="2.jpg"/>
+      </a>
+      <div class="caption">https://i.postimg.cc/JhVWfmqr/2.jpg</div>
+    </div>
+    <div class="img-wrap">
+      <a href="https://i.postimg.cc/sXKdGWR7/3.jpg" target="_blank">
+        <img src="https://i.postimg.cc/sXKdGWR7/3.jpg" alt="3.jpg"/>
+      </a>
+      <div class="caption">https://i.postimg.cc/sXKdGWR7/3.jpg</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('collapsed');}
+</script>
 </body>
 </html>
