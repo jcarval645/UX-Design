@@ -37,6 +37,11 @@
             top: 0;
             height: 100vh;
             overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar.hidden {
+            display: none;
         }
 
         .sidebar h2 {
@@ -82,6 +87,15 @@
             padding: 3rem;
             overflow-y: auto;
             height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .main-content.full-width {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
         }
 
         .header {
@@ -92,6 +106,11 @@
             margin-bottom: 3rem;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
             border: 2px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+
+        .header.hidden {
+            display: none;
         }
 
         .header h1 {
@@ -467,6 +486,126 @@
             color: white;
         }
 
+        .category-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .landing-page h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .landing-page .subtitle {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .landing-page .info {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            margin-bottom: 3rem;
+        }
+
+        .landing-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .landing-btn {
+            background: white;
+            color: #1a1a1a;
+            border: 3px solid #d4af37;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .landing-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .category-btn {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: #d4af37;
+            color: #1a1a1a;
+            border-color: #d4af37;
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .back-button {
+            background: #2d2d2d;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .back-button:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+        }
+
+        .back-button.visible {
+            display: inline-block;
+        }
+
         .image-container {
             margin: 2rem 0;
             text-align: center;
@@ -521,6 +660,93 @@
             transform: translateY(-5px);
         }
 
+        .status-header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-header h3 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .status-info-item {
+            padding: 0.5rem;
+        }
+
+        .status-info-item strong {
+            color: #d4af37;
+        }
+
+        .health-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .health-badge.on-track {
+            background: #48bb78;
+            color: white;
+        }
+
+        .health-badge.at-risk {
+            background: #ecc94b;
+            color: #1a1a1a;
+        }
+
+        .status-section {
+            margin: 2rem 0;
+        }
+
+        .status-section h4 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+
+        .status-table th {
+            background: #f8f8f8;
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 2px solid #d4af37;
+            font-weight: 600;
+        }
+
+        .status-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .checkmark {
+            color: #48bb78;
+        }
+
+        .arrow {
+            color: #d4af37;
+        }
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -561,7 +787,7 @@
     <div class="container">
         <aside class="sidebar">
             <h2>Table of Contents</h2>
-            <ul class="toc-list">
+            <ul class="toc-list" id="toc-charter">
                 <li><a href="#overview" class="toc-link">Project Overview</a></li>
                 <li><a href="#goal" class="toc-link">Project Goal</a></li>
                 <li><a href="#vision" class="toc-link">Vision & Strategy</a></li>
@@ -573,17 +799,60 @@
                 <li><a href="#methodology" class="toc-link">Project Methodology</a></li>
                 <li><a href="#tools" class="toc-link">Tool Selection</a></li>
             </ul>
+            <ul class="toc-list" id="toc-status" style="display: none;">
+                <li><a href="#week12" class="toc-link">Week 12 - Portfolio</a></li>
+                <li><a href="#week11" class="toc-link">Week 11 - ASI Engagement</a></li>
+                <li><a href="#week10" class="toc-link">Week 10 - Test Report</a></li>
+                <li><a href="#week9" class="toc-link">Week 9 - Prototype</a></li>
+                <li><a href="#week8" class="toc-link">Week 8 - User Map</a></li>
+                <li><a href="#week7" class="toc-link">Week 7 - Project Brief</a></li>
+            </ul>
+            <ul class="toc-list" id="toc-interviews" style="display: none;">
+                <li><a href="#interview-overview" class="toc-link">Interview Overview</a></li>
+            </ul>
         </aside>
 
-        <main class="main-content">
-            <div class="header">
+        <main class="main-content full-width" id="main-content">
+            <div id="landing-page" class="landing-page">
+                <h1>Personal Development Portfolio</h1>
+                <p class="subtitle">UX/UI Design Project</p>
+                <p class="info">
+                    <strong>Jasmine Carvalho</strong> • Managing IT Projects • Fall 2025
+                </p>
+                <div class="landing-buttons">
+                    <button class="landing-btn" onclick="navigateToCategory('charter')">
+                        <div>📋</div>
+                        Project Charter
+                    </button>
+                    <button class="landing-btn" onclick="navigateToCategory('status')">
+                        <div>📊</div>
+                        Project Status Report
+                    </button>
+                    <button class="landing-btn" onclick="navigateToCategory('interviews')">
+                        <div>🎤</div>
+                        Interviews
+                    </button>
+                </div>
+            </div>
+
+            <button class="back-button" id="back-button" onclick="backToLanding()">← Back to Home</button>
+
+            <div class="header hidden" id="header">
                 <h1>Personal Development Portfolio: UX/UI Design</h1>
                 <div class="student-info">
                     <span><strong>Student:</strong> Jasmine Carvalho</span>
                     <span><strong>Course:</strong> Managing IT Projects</span>
                     <span><strong>Semester:</strong> Fall 2025</span>
                 </div>
+                
+                <div class="category-nav">
+                    <button class="category-btn active" onclick="showCategory('charter')">Project Charter</button>
+                    <button class="category-btn" onclick="showCategory('status')">Project Status Report</button>
+                    <button class="category-btn" onclick="showCategory('interviews')">Interviews</button>
+                </div>
             </div>
+
+            <div id="charter-content" class="category-content active">
 
             <section class="section" id="overview">
                 <div class="section-header" onclick="toggleSection(this)">
@@ -1580,6 +1849,633 @@
                     </div>
                 </div>
             </section>
+        </div>
+
+        <div id="status-content" class="category-content">
+            <section class="section" id="week12">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 12 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 6 -- Portfolio</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 12: Nov 3 -- 10, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Put together all deliverables into a case study</li>
+                            <li>Publish the project into a portfolio platform showcasing the GETmobile redesign process</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge on-track">🟢 ON TRACK</span>
+                        <p><strong>Executive Summary:</strong> After completing Deliverable 5, the project is now entering its final phase, creating and publishing the portfolio. This phase will focus on putting together all previous work into a polished case study. The case will be published online to demonstrate the complete project.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Gather project materials</li>
+                            <li><span class="checkmark">✓</span> Draft outline for the case study</li>
+                            <li><span class="checkmark">✓</span> Decide preferred portfolio platforms</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Write the full case study content</li>
+                            <li><span class="arrow">→</span> Select portfolio platform</li>
+                            <li><span class="arrow">→</span> Build and design the case study page</li>
+                            <li><span class="arrow">→</span> Publish portfolio page with final project content</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Project materials gathered</td>
+                                    <td>11/04/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Draft case study</td>
+                                    <td>11/06/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Portfolio platform selected</td>
+                                    <td>11/07/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Case study page built</td>
+                                    <td>11/09/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliverable 6 completed and published</td>
+                                    <td>11/10/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>No issues or risks identified for this reporting period.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>No changes occurred since the last reporting period.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="week11">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 11 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 5 -- ASI Engagement</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 11: Oct 27 -- Nov 3, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Engage ASI for feedback on the prototype getting insights for the report and portfolio</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge at-risk">🟡 AT RISK</span>
+                        <p><strong>Executive Summary:</strong> Based on feedback I received from the professor; a new deliverable was added to get ASI's input. Prepare materials will be packaged and sent to ASI with questions. If there have been no responses, I will document that to ensure that the deliverable can still be closed.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Outline materials to share with ASI</li>
+                            <li><span class="checkmark">✓</span> Draft outreach email</li>
+                            <li><span class="checkmark">✓</span> Finalize feedback questions</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Conduct usability test sessions with classmates</li>
+                            <li><span class="arrow">→</span> Take detailed notes on feedback and issues</li>
+                            <li><span class="arrow">→</span> Put together findings into a short test report</li>
+                            <li><span class="arrow">→</span> Summarize insights and improvements recommendations</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Prepare package</td>
+                                    <td>10/28/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Email sent to ASI</td>
+                                    <td>10/29/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Follow up (if no response)</td>
+                                    <td>11/02/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Feedback captured or attempt documented</td>
+                                    <td>11/03/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliverable 5 Completed</td>
+                                    <td>11/03/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>No issues or risks identified for this reporting period.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>Added Deliverable 5 based on professor feedback, schedule adjusted but it should be fine.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="week10">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 10 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 4 -- Test Report</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 10: Oct 20 -- Oct 27, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Conduct usability testing of the GETmobile prototype</li>
+                            <li>Document user feedback and summarize findings into a test report</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge on-track">🟢 ON TRACK</span>
+                        <p><strong>Executive Summary:</strong> After completing the prototype, this week will be focused on preparing and conducting usability testing. A short test script with three user tasks will be created and shared with at least three classmates who will participate as test users. After running the sessions, feedback will be analyzed and written into a one-page summary highlighting usability issues and improvements.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Completed Deliverable 3 -- Prototype</li>
+                            <li><span class="checkmark">✓</span> Create a draft of test script</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Conduct usability test sessions with classmates</li>
+                            <li><span class="arrow">→</span> Take detailed notes on feedback and issues</li>
+                            <li><span class="arrow">→</span> Put together findings into a short test report</li>
+                            <li><span class="arrow">→</span> Summarize insights and improvements recommendations</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Test script finalized</td>
+                                    <td>10/22/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Usability testing completed</td>
+                                    <td>10/24/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Test findings compiled</td>
+                                    <td>10/25/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliverable 4 completed</td>
+                                    <td>10/27/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>No issues or risks identified for this reporting period.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>No changes occurred since the last reporting period.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="week9">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 9 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 3 -- Prototype</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 9: Oct 13 -- Oct 20, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Develop a prototype of an improved GETmobile user flow</li>
+                            <li>Move from low-fidelity design to a high-fidelity prototype</li>
+                            <li>Incorporate peer feedback to refine final version</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge on-track">🟢 ON TRACK</span>
+                        <p><strong>Executive Summary:</strong> After completing the Current User Map, the focus has been moved to prototyping new and improved solutions for GETmobile. The low-fidelity phase has started exploring possible user flows. Once an idea has been selected, the design will be developed into wireframes and then a high-fidelity prototype using Figma. I will also be conducting a peer review to ensure usability and visual is consistent.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Completed Deliverable 2 -- Current User Map</li>
+                            <li><span class="checkmark">✓</span> Brainstorm ideas for new user flow improvements</li>
+                            <li><span class="checkmark">✓</span> Start drafting wireframes in Figma</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Continue building the low-fidelity wireframe</li>
+                            <li><span class="arrow">→</span> Decide visual style</li>
+                            <li><span class="arrow">→</span> Begin creating reusable UI components like buttons</li>
+                            <li><span class="arrow">→</span> Prepare for prototype review with peers</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Low-Fidelity Prototype Completed</td>
+                                    <td>10/16/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>High-Fidelity Prototype Completed</td>
+                                    <td>10/19/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Peer Review Conducted</td>
+                                    <td>10/20/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Proceed with Deliverable 4</td>
+                                    <td>10/21/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>No issues or risks identified for this reporting period.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>No changes occurred since the last reporting period.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="week8">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 8 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 2 -- Current User Map</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 8: Oct 6 -- Oct 13, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Document existing user flow of GETmobile app</li>
+                            <li>Identify issues and visualize them in a user journey map</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge on-track">🟢 ON TRACK</span>
+                        <p><strong>Executive Summary:</strong> After completing Deliverable 1, I have moved on to mapping the current user experience of GETmobile. This week, I will document the app flow by preforming user tasks and taking screenshots. The information will be put together into a user journey map using a tool FigJam highlighting the main issues identified from the survey results.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Completed Deliverable 1 and exported to PDF</li>
+                            <li><span class="checkmark">✓</span> Began exploring GETmobile's app interface</li>
+                            <li><span class="checkmark">✓</span> Outline main user actions to document</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Perform app tasks and take screenshots</li>
+                            <li><span class="arrow">→</span> Document user actions in Google Docs</li>
+                            <li><span class="arrow">→</span> Create user map in FigJam</li>
+                            <li><span class="arrow">→</span> Add notes highlighting issues</li>
+                            <li><span class="arrow">→</span> Export user map as PDF</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>App flow documented</td>
+                                    <td>10/08/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Created user map</td>
+                                    <td>10/10/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliverable 2 Completed</td>
+                                    <td>10/11/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Proceed with Deliverable 3</td>
+                                    <td>10/13/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>No issues or risks identified for this reporting period.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>No changes occurred since the last reporting period.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="week7">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>📊 Week 7 Status Report</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="status-header">
+                        <h3>Deliverable 1 -- Project Brief & Problem Statement</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Reporting Period:</strong> Week 7: Sept 29 -- Oct 6, 2025
+                            </div>
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Project Goal</h4>
+                        <ul>
+                            <li>Conduct a class survey and analyze results to identify the most common issue on GETmobile</li>
+                            <li>Draft and complete the Project Brief document summarizing the findings and selected problem</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🏥 Project Health</h4>
+                        <span class="health-badge on-track">🟢 ON TRACK</span>
+                        <p><strong>Executive Summary:</strong> Survey questions has been finalized and set up in Qualtrics. The next step is to distribute the survey and begin collecting responses. Once data is gathered, I will analyze the results to identify main issues for the problem statement and begin drafting the Project Brief document.</p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>✅ Accomplishments This Week</h4>
+                        <ul>
+                            <li><span class="checkmark">✓</span> Drafted survey questions</li>
+                            <li><span class="checkmark">✓</span> Created Project Brief document on Google Doc</li>
+                            <li><span class="checkmark">✓</span> Set up survey in Qualtrics</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>📅 Plan for Next Week</h4>
+                        <ul>
+                            <li><span class="arrow">→</span> Distribute survey to classmates</li>
+                            <li><span class="arrow">→</span> Monitor and close survey after responses</li>
+                            <li><span class="arrow">→</span> Begin analyzing data and identify main issues</li>
+                            <li><span class="arrow">→</span> Start drafting Problem Statement and visual data summaries</li>
+                        </ul>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🎯 Upcoming Milestones</h4>
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Target Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Survey distributed</td>
+                                    <td>10/02/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Data collection completed</td>
+                                    <td>10/04/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliverable 1 Completed</td>
+                                    <td>10/06/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                                <tr>
+                                    <td>Proceed with Deliverable 2</td>
+                                    <td>10/07/2025</td>
+                                    <td>ON TRACK</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>⚠️ Issues & Risks / Mitigations</h4>
+                        <p><strong>No issues or risks to report</strong></p>
+                        <p><em>Potential risk: Low survey response rate</em></p>
+                        <p><em>Mitigation Plan: If survey responses are limited, I will explore alternative data sources such as app store reviews to identify common issues with GETmobile.</em></p>
+                    </div>
+
+                    <div class="status-section">
+                        <h4>🔄 Changes Since Last Report</h4>
+                        <p><strong>No changes to report</strong></p>
+                        <p>No changes occurred since the last reporting period.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="interviews-content" class="category-content">
+            <section class="section" id="interview-overview">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>Interviews</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>Interview content coming soon...</p>
+                </div>
+            </section>
+        </div>
+
         </main>
     </div>
 
@@ -1632,6 +2528,123 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        function showCategory(category) {
+            // Hide all category content
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Hide all TOC lists
+            document.querySelectorAll('.toc-list').forEach(toc => {
+                toc.style.display = 'none';
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected category content and TOC
+            const categoryMap = {
+                'charter': 'charter-content',
+                'status': 'status-content',
+                'interviews': 'interviews-content'
+            };
+            
+            const tocMap = {
+                'charter': 'toc-charter',
+                'status': 'toc-status',
+                'interviews': 'toc-interviews'
+            };
+            
+            document.getElementById(categoryMap[category]).classList.add('active');
+            document.getElementById(tocMap[category]).style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top of main content
+            document.querySelector('.main-content').scrollTop = 0;
+        }
+
+        function navigateToCategory(category) {
+            // Hide landing page
+            document.getElementById('landing-page').style.display = 'none';
+            
+            // Show sidebar, header, and back button
+            document.querySelector('.sidebar').classList.remove('hidden');
+            document.getElementById('header').classList.remove('hidden');
+            document.getElementById('back-button').classList.add('visible');
+            
+            // Remove full-width from main content
+            document.getElementById('main-content').classList.remove('full-width');
+            
+            // Show selected category content and TOC
+            const categoryMap = {
+                'charter': 'charter-content',
+                'status': 'status-content',
+                'interviews': 'interviews-content'
+            };
+            
+            const tocMap = {
+                'charter': 'toc-charter',
+                'status': 'toc-status',
+                'interviews': 'toc-interviews'
+            };
+            
+            // Hide all content first
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Hide all TOC lists
+            document.querySelectorAll('.toc-list').forEach(toc => {
+                toc.style.display = 'none';
+            });
+            
+            // Show selected content and TOC
+            document.getElementById(categoryMap[category]).classList.add('active');
+            document.getElementById(tocMap[category]).style.display = 'block';
+            
+            // Update active button in header nav
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const buttonTexts = {
+                'charter': 'Project Charter',
+                'status': 'Project Status Report',
+                'interviews': 'Interviews'
+            };
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.textContent.trim() === buttonTexts[category]) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function backToLanding() {
+            // Show landing page
+            document.getElementById('landing-page').style.display = 'flex';
+            
+            // Hide sidebar, header, back button, and all content
+            document.querySelector('.sidebar').classList.add('hidden');
+            document.getElementById('header').classList.add('hidden');
+            document.getElementById('back-button').classList.remove('visible');
+            
+            // Add full-width back to main content
+            document.getElementById('main-content').classList.add('full-width');
+            
+            // Hide all category content
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Scroll to top
+            document.querySelector('.main-content').scrollTop = 0;
+        }
     </script>
 </body>
 </html>
