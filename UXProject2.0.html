@@ -785,7 +785,7 @@
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
+        <aside class="sidebar hidden">
             <h2>Table of Contents</h2>
             <ul class="toc-list" id="toc-charter">
                 <li><a href="#overview" class="toc-link">Project Overview</a></li>
@@ -810,6 +810,12 @@
             <ul class="toc-list" id="toc-interviews" style="display: none;">
                 <li><a href="#interview-overview" class="toc-link">Interview Overview</a></li>
             </ul>
+            <ul class="toc-list" id="toc-closure" style="display: none;">
+                <li><a href="#closure-overview" class="toc-link">Closure Overview</a></li>
+            </ul>
+            <ul class="toc-list" id="toc-star" style="display: none;">
+                <li><a href="#star-overview" class="toc-link">STAR Stories Overview</a></li>
+            </ul>
         </aside>
 
         <main class="main-content full-width" id="main-content">
@@ -827,6 +833,14 @@
                     <button class="landing-btn" onclick="navigateToCategory('status')">
                         <div>📊</div>
                         Project Status Report
+                    </button>
+                    <button class="landing-btn" onclick="navigateToCategory('closure')">
+                        <div>✅</div>
+                        Project Closure Document
+                    </button>
+                    <button class="landing-btn" onclick="navigateToCategory('star')">
+                        <div>⭐</div>
+                        STAR Stories
                     </button>
                     <button class="landing-btn" onclick="navigateToCategory('interviews')">
                         <div>🎤</div>
@@ -848,11 +862,13 @@
                 <div class="category-nav">
                     <button class="category-btn active" onclick="showCategory('charter')">Project Charter</button>
                     <button class="category-btn" onclick="showCategory('status')">Project Status Report</button>
+                    <button class="category-btn" onclick="showCategory('closure')">Project Closure</button>
+                    <button class="category-btn" onclick="showCategory('star')">STAR Stories</button>
                     <button class="category-btn" onclick="showCategory('interviews')">Interviews</button>
                 </div>
             </div>
 
-            <div id="charter-content" class="category-content active">
+            <div id="charter-content" class="category-content">
 
             <section class="section" id="overview">
                 <div class="section-header" onclick="toggleSection(this)">
@@ -2476,6 +2492,30 @@
             </section>
         </div>
 
+        <div id="closure-content" class="category-content">
+            <section class="section" id="closure-overview">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>Project Closure Document</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>Project Closure Document content coming soon...</p>
+                </div>
+            </section>
+        </div>
+
+        <div id="star-content" class="category-content">
+            <section class="section" id="star-overview">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>STAR Stories</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>STAR Stories content coming soon...</p>
+                </div>
+            </section>
+        </div>
+
         </main>
     </div>
 
@@ -2549,13 +2589,17 @@
             const categoryMap = {
                 'charter': 'charter-content',
                 'status': 'status-content',
-                'interviews': 'interviews-content'
+                'interviews': 'interviews-content',
+                'closure': 'closure-content',
+                'star': 'star-content'
             };
             
             const tocMap = {
                 'charter': 'toc-charter',
                 'status': 'toc-status',
-                'interviews': 'toc-interviews'
+                'interviews': 'toc-interviews',
+                'closure': 'toc-closure',
+                'star': 'toc-star'
             };
             
             document.getElementById(categoryMap[category]).classList.add('active');
@@ -2615,7 +2659,9 @@
             const buttonTexts = {
                 'charter': 'Project Charter',
                 'status': 'Project Status Report',
-                'interviews': 'Interviews'
+                'interviews': 'Interviews',
+                'closure': 'Project Closure',
+                'star': 'STAR Stories'
             };
             
             document.querySelectorAll('.category-btn').forEach(btn => {
