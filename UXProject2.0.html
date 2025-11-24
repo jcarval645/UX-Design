@@ -747,6 +747,33 @@
             color: #d4af37;
         }
 
+        .portfolio-frame {
+            width: 100%;
+            height: calc(100vh - 4rem);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            background: #1a1a1a;
+            color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -811,6 +838,9 @@
             <ul class="toc-list" id="toc-interviews" style="display: none;">
                 <li><a href="#interview-overview" class="toc-link">Interview Overview</a></li>
             </ul>
+            <ul class="toc-list" id="toc-portfolio" style="display: none;">
+                <li><a href="#portfolio-view" class="toc-link">View Portfolio</a></li>
+            </ul>
             <ul class="toc-list" id="toc-closure" style="display: none;">
                 <li><a href="#closure-overview" class="toc-link">Closure Overview</a></li>
             </ul>
@@ -834,6 +864,10 @@
                     <button class="landing-btn" onclick="navigateToCategory('status')">
                         <div>📊</div>
                         Project Status Report
+                    </button>
+                    <button class="landing-btn" onclick="navigateToCategory('portfolio')">
+                        <div>🎨</div>
+                        Portfolio
                     </button>
                     <button class="landing-btn" onclick="navigateToCategory('closure')">
                         <div>✅</div>
@@ -863,6 +897,7 @@
                 <div class="category-nav">
                     <button class="category-btn active" onclick="showCategory('charter')">Project Charter</button>
                     <button class="category-btn" onclick="showCategory('status')">Project Status Report</button>
+                    <button class="category-btn" onclick="showCategory('portfolio')">Portfolio</button>
                     <button class="category-btn" onclick="showCategory('closure')">Project Closure</button>
                     <button class="category-btn" onclick="showCategory('star')">STAR Stories</button>
                     <button class="category-btn" onclick="showCategory('interviews')">Interviews</button>
@@ -2589,6 +2624,27 @@
             </section>
         </div>
 
+        <div id="portfolio-content" class="category-content">
+            <section class="section" id="portfolio-view">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>UX/UI Design Portfolio</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <h4>GETmobile App Redesign Project</h4>
+                        <p>This portfolio showcases the complete UX/UI design process for improving the GETmobile university app, including user research, prototyping, and usability testing.</p>
+                        <a href="https://jcarval645.github.io/UX-Design/Portfolio.html" target="_blank" class="portfolio-link">
+                            Open Portfolio in New Tab →
+                        </a>
+                    </div>
+                    
+                    <h3>Embedded Portfolio View</h3>
+                    <iframe src="https://jcarval645.github.io/UX-Design/Portfolio.html" class="portfolio-frame" title="UX/UI Design Portfolio"></iframe>
+                </div>
+            </section>
+        </div>
+
         <div id="closure-content" class="category-content">
             <section class="section" id="closure-overview">
                 <div class="section-header" onclick="toggleSection(this)">
@@ -2686,6 +2742,7 @@
             const categoryMap = {
                 'charter': 'charter-content',
                 'status': 'status-content',
+                'portfolio': 'portfolio-content',
                 'interviews': 'interviews-content',
                 'closure': 'closure-content',
                 'star': 'star-content'
@@ -2694,6 +2751,7 @@
             const tocMap = {
                 'charter': 'toc-charter',
                 'status': 'toc-status',
+                'portfolio': 'toc-portfolio',
                 'interviews': 'toc-interviews',
                 'closure': 'toc-closure',
                 'star': 'toc-star'
@@ -2756,6 +2814,7 @@
             const buttonTexts = {
                 'charter': 'Project Charter',
                 'status': 'Project Status Report',
+                'portfolio': 'Portfolio',
                 'interviews': 'Interviews',
                 'closure': 'Project Closure',
                 'star': 'STAR Stories'
