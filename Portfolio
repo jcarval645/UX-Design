@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GETmobile Redesign - UX Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #ffffff;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: white;
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+
+        .section-subtitle {
+            color: #6b7280;
+            font-size: 1.15em;
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        /* Overview Card */
+        .overview-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+            margin-top: -60px;
+            position: relative;
+            border: 2px solid rgba(6, 182, 212, 0.1);
+        }
+
+        .overview-text {
+            color: #374151;
+            font-size: 1.15em;
+            line-height: 1.9;
+            margin-bottom: 40px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .overview-item {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .overview-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .overview-item h3 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #0891b2;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .overview-item p {
+            color: #1a1a2e;
+            font-size: 1.05em;
+            font-weight: 600;
+        }
+
+        .deliverables {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .deliverable-tag {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+
+        .problem-box {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-left: 6px solid #f43f5e;
+            padding: 35px;
+            margin-top: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(244, 63, 94, 0.15);
+        }
+
+        .problem-box h3 {
+            color: #dc2626;
+            font-size: 1.4em;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .problem-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-style: italic;
+            color: #4b5563;
+            margin-top: 15px;
+            border-left: 4px solid #f43f5e;
+        }
+
+        /* Research Section */
+        .research-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .research-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 5px solid #06b6d4;
+        }
+
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.2);
+        }
+
+        .research-card h3 {
+            font-size: 1.6em;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .research-card p {
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .research-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .research-card li {
+            color: #374151;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .research-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .research-card img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .fig-caption {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Issues Section */
+        .issues-section {
+            background: white;
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .issue-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .issue-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #06b6d4, #3b82f6);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.2);
+        }
+
+        .issue-card h4 {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .issue-card p {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1.02em;
+        }
+
+        /* Key Insights */
+        .insights-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 50px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .insights-box h3 {
+            color: #1a1a2e;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .insights-box p {
+            color: #374151;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .insights-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .insights-box li {
+            color: #374151;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .insights-box li:before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-size: 1.2em;
+        }
+
+        .insights-box strong {
+            color: #1a1a2e;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        .journey-box {
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .journey-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 30px;
+        }
+
+        .journey-box img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Prototype Section */
+        .prototype-section {
+            background: white;
+        }
+
+        .prototype-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .prototype-box h3 {
+            color: #1a1a2e;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .prototype-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .prototype-box ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .prototype-box li {
+            color: #374151;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .prototype-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .figma-embed {
+            width: 100%;
+            height: 600px;
+            border: 3px solid #e5e7eb;
+            border-radius: 20px;
+            background: white;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Testing Section */
+        .testing-section {
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        .test-box {
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .test-box h3 {
+            color: #1a1a2e;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .test-box h4 {
+            color: #0891b2;
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .test-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .test-box ul, .test-box ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .test-box li {
+            color: #374151;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .feedback-quote {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 20px;
+            border-radius: 12px;
+            font-style: italic;
+            color: #374151;
+            margin: 15px 0;
+            border-left: 4px solid #06b6d4;
+        }
+
+        /* ASI Section */
+        .asi-section {
+            background: white;
+        }
+
+        .asi-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .asi-box h3 {
+            color: #1a1a2e;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .asi-box h4 {
+            color: #0891b2;
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .asi-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+
+        .asi-box ol {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .asi-box li {
+            color: #374151;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Reflection */
+        .reflection-section {
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        .reflection-box {
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .reflection-box h3 {
+            color: #1a1a2e;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .reflection-box p {
+            color: #374151;
+            line-height: 1.9;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 35px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 968px) {
+            .overview-grid, .two-col, .issues-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .overview-card, .journey-box, .prototype-box, .test-box, .asi-box, .reflection-box {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>GETmobile Redesign</h1>
+            <p>A complete UX design cycle to identify and solve usability issues within the GETmobile app.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="overview-card">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="overview-text">
+                This project involved a comprehensive UX design cycle to identify and address usability issues affecting CSULA students who currently use the GETmobile app. Through my research, iterative design, and usability testing, I developed solutions to enhance the app's functionality and improve student satisfaction.
+            </p>
+
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <h3>Role</h3>
+                    <p>UX Researcher and Designer</p>
+                </div>
+                <div class="overview-item">
+                    <h3>Duration</h3>
+                    <p>6 weeks</p>
+                </div>
+                <div class="overview-item">
+                    <h3>Tools</h3>
+                    <p>Figma, FigJam, Qualtrics</p>
+                </div>
+                <div class="overview-item">
+                    <h3>Users</h3>
+                    <p>5+ Survey Responses</p>
+                </div>
+            </div>
+
+            <div class="deliverables">
+                <span class="deliverable-tag">Project Brief</span>
+                <span class="deliverable-tag">User Journey Map</span>
+                <span class="deliverable-tag">Prototype</span>
+                <span class="deliverable-tag">Test Report</span>
+                <span class="deliverable-tag">ASI Engagement</span>
+                <span class="deliverable-tag">Portfolio</span>
+            </div>
+
+            <div class="problem-box">
+                <h3>Problem Statement</h3>
+                <p>
+                    The Cal State LA GETmobile app suffers from usability challenges that prevent students from being efficient and create negative feelings towards the app. While the app is essential for simple tasks such as viewing class schedules, class information, transportation, and parking details, as well as reviewing financial aid information, current user feedback from surveys and app store reviews indicates that these issues hinder a satisfactory user experience.
+                </p>
+                <div class="quote">
+                    "The format of the GETmobile app isn't the most user-friendly. It can be confusing at times, and if it isn't, then sometimes features don't want to load or connect on the app." - CSULA Student
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section research-section">
+        <div class="container">
+            <h2 class="section-title">User Research and Data Collection</h2>
+
+            <div class="two-col">
+                <div class="research-card">
+                    <h3>📊 Qualtrics Survey</h3>
+                    <ul>
+                        <li>10 responses from active GETmobile users</li>
+                        <li>Questions focused on difficulties and challenges users face</li>
+                        <li>When providing insights, responses lacked genuine opinions</li>
+                    </ul>
+                    <img src="https://i.postimg.cc/VsMkY5Kc/Fig1.jpg" alt="Survey results">
+                    <p class="fig-caption">Fig 1. Results of Question 1, "How easy is it for you to find the information or feature you need in the GETmobile app?"</p>
+                    <img src="https://i.postimg.cc/PrTTTyLy/FIg2.jpg" alt="Survey responses">
+                    <p class="fig-caption">Fig 2. Responses to Question 2, "What is the biggest challenge you face when using the GETmobile app?"</p>
+                </div>
+
+                <div class="research-card">
+                    <h3>⭐ App Store Review Analysis</h3>
+                    <ul>
+                        <li>Revealed consistent patterns in user frustrations</li>
+                        <li>Confirmed survey findings</li>
+                        <li>Identified specific features causing issues</li>
+                    </ul>
+                    <img src="https://i.postimg.cc/QCbLFLBW/Fig3.png" alt="App store reviews">
+                    <p class="fig-caption">Fig. 3 Reviews from Google Play and Apple App Store</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section issues-section">
+        <div class="container">
+            <h2 class="section-title">Top 3 Usability Issues</h2>
+            <p class="section-subtitle">Analysis revealed consistent patterns across both survey responses and app store reviews.</p>
+
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <h4>🚫 Critical Data is Missing</h4>
+                    <p>even after logging in with CIN and email, personalized data, including today's schedule, grades, and courses, fails to display and remains empty.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>🗺️ Information Overload and Buried Navigation</h4>
+                    <p>Scattered information framework with no clear path to essential features. Students do not know where to go to find what they need.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h4>⚠️ Unreliable Functionality</h4>
+                    <p>Broken buttons, inconsistent app vs. Browser, and frequent loading failures, breaking user flow, creating frustration</p>
+                </div>
+            </div>
+
+            <div class="insights-box">
+                <h3>Key Insights</h3>
+                <p>The research showed me consistent issues that impact student efficiency and satisfaction:</p>
+                <ul>
+                    <li><strong>Navigation Challenges:</strong> Students struggle to find specific features, indicating that the format is not as logical as it is.</li>
+                    <li><strong>Performance Issues:</strong> Reviews mentioned slow load times and a lack of information on the page.</li>
+                    <li><strong>User Interface Clutter:</strong> The current design is perceived as outdated and cluttered, resulting in content overload that hinders students' quick access to information.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section journey-section">
+        <div class="container">
+            <h2 class="section-title">Current User Journey</h2>
+            <div class="journey-box">
+                <p>
+                    To understand existing pain points, I documented all user steps in the GETmobile app, captured screenshots of each screen, took notes on problem areas, and highlighted issues using FigJam.
+                </p>
+                <img src="https://i.postimg.cc/wjrCyQvH/Fig4.png" alt="User journey map">
+                <p class="fig-caption">Fig 4. User Journey Map on FigJam</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section prototype-section">
+        <div class="container">
+            <h2 class="section-title">Prototype</h2>
+            <div class="prototype-box">
+                <p>I created a Figma prototype to address navigation issues.</p>
+                <ul>
+                    <li>Logical information structure</li>
+                    <li>Cleaner and modern visual design</li>
+                    <li>Efficient user flow for a common task</li>
+                </ul>
+                <iframe class="figma-embed" src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/VK0BJcj6qinIBRfr1oUKQm/GETmobile-App?node-id=3-2&p=f&t=qj78LYKCVtUEl2FV-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" allowfullscreen></iframe>
+                <div style="text-align: center;">
+                    <a href="https://www.figma.com/proto/VK0BJcj6qinIBRfr1oUKQm/GETmobile-App?node-id=3-2&p=f&t=qj78LYKCVtUEl2FV-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="btn" target="_blank">View Full Prototype</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testing-section">
+        <div class="container">
+            <h2 class="section-title">Test Report</h2>
+            <div class="test-box">
+                <p>As part of a usability testing phase, I conducted a test session with classmates using an interactive prototype. My goal was to assess whether navigation and functionality were efficient.</p>
+                
+                <h4>Test Script</h4>
+                <ol>
+                    <li>Tap the three icons at the bottom of the screen to ensure you are led to the correct page.</li>
+                    <li>Tap "My Course" and click the report button to ensure it leads you to the "Report A Issue" page and then send! No need to type in name, email, etc.</li>
+                    <li>Tap the grad cap icon at the bottom, and it will send you to the "My Academics" page, including multiple pages. Scroll up and down to ensure it is functional.</li>
+                </ol>
+
+                <h4>Participant Feedback</h4>
+                <div class="feedback-quote">
+                    "I liked the new layout and how interactive it is, being able to click through pages."
+                </div>
+                <div class="feedback-quote">
+                    "Some icons led to the wrong pages; I am not sure if that is intentional or not."
+                </div>
+
+                <h4>My Response</h4>
+                <p>After receiving this feedback, I revisited the prototype to review the connection of each page. I noticed that some of the page interactions were leading to the wrong pages; I quickly fixed the issue. For the blank screens, it was likely due to platform loading issues, which are out of my control.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section asi-section">
+        <div class="container">
+            <h2 class="section-title">ASI Engagement</h2>
+            <div class="asi-box">
+                <p>I presented the project summary, survey findings, and prototype demonstration to an ASI representative at CSULA via email to gather feedback and ensure the solution aligns with the university's goals and student needs.</p>
+                
+                <h4>Feedback Questions</h4>
+                <ol>
+                    <li>Do these findings align with the student feedback that ASI receives?</li>
+                    <li>From a leadership perspective, which issue should be addressed first?</li>
+                    <li>Are there some limitations, such as budget or technical, when it comes to improving an app?</li>
+                    <li>After viewing the prototype, what feedback would you give me, design-wise, functionality-wise, etc.?</li>
+                </ol>
+
+                <h4>Response</h4>
+                <ol>
+                    <li>These findings align with the complaints that the current GET App is slow, hard to navigate, and has a cluttered design.</li>
+                    <li>From a leadership perspective, the issues that should be addressed are moving the apps and icons that are more frequently used depending on students' needs. They should be organized by sections to easily find what the student is looking for, like academics, finances, and campus life, which I like that you have added. There should also be an added page in campus life for advisors, student leaders, RAs if you live on campus and maybe a Dean or a Chair contact for the college that you belong to, to improve the accessibility and awareness of people that are there to assist them.</li>
+                    <li>Limitations that come with updating the app would be a technical issue. I have heard that people would like the GET app and the canvas to be linked, so that as soon as the professor uploads an assignment, it would automatically show up on the home page since the wait time and log in time for canvas is slow. Courses and schedules can be combined into one and more students can have quicker access to viewing their assignments without having to log into canvas every time.</li>
+                    <li>I like that the home page includes less resources, so it isn't overwhelming and cause people to not want to look through everything. I think that having a search bar on the home page so that students don't need to scroll. I like that you created categories for finances, campus life, and academics. I like the overall design, but I feel that the app can benefit from more color integration, so it isn't plain and boring. Using colors aside from gold and black would be a nice change, but not too bright to where it makes it hard to navigate.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reflection-section">
+        <div class="container">
+            <h2 class="section-title">Reflection</h2>
+            <div class="reflection-box">
+                <p>After contacting an ASI representative, they were able to confirm that the main usability concerns, such as navigation challenges, performance issues, and a cluttered layout, accurately represented the frustrations that students experience, thereby validating my research.</p>
+                <p>Although this project concludes after the engagement, their feedback allowed me to understand what it is like to receive feedback and guidance from a leadership position. Documenting these insights enables me to close the project and gain a deeper understanding of the importance of understanding users' and stakeholders' perspectives, highlighting the value of collaboration and effective communication in the real world.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>Let's Connect!</h3>
+            <p>Interested in discussing this project or collaborating?</p>
+            <a href="mailto:your.email@example.com" class="btn">Get in Touch</a>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Behance</a>
+                <a href="#">Portfolio</a>
+            </div>
+            <p style="margin-top: 45px; font-size: 0.9em; opacity: 0.7;">© 2024 Your Name</p>
+        </div>
+    </footer>
+</body>
+</html>
