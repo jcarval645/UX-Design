@@ -774,6 +774,56 @@
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
 
+        .closure-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            background: #48bb78;
+            color: white;
+        }
+
+        .lessons-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+        }
+
+        .lessons-table th {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .lessons-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e5e5e5;
+            color: #2d2d2d;
+            vertical-align: top;
+        }
+
+        .lessons-table tbody tr:hover {
+            background: #fffef5;
+        }
+
+        .signoff-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .signoff-list li {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f8f8f8;
+            border-left: 4px solid #d4af37;
+            border-radius: 4px;
+        }
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -842,7 +892,20 @@
                 <li><a href="#portfolio-view" class="toc-link">View Portfolio</a></li>
             </ul>
             <ul class="toc-list" id="toc-closure" style="display: none;">
-                <li><a href="#closure-overview" class="toc-link">Closure Overview</a></li>
+                <li><a href="#closure-info" class="toc-link">Project Information</a></li>
+                <li><a href="#closure-deliverables" class="toc-link">Deliverables Summary</a></li>
+                <li><a href="#closure-changes" class="toc-link">Change Log</a></li>
+                <li><a href="#closure-performance" class="toc-link">Performance Analysis</a></li>
+                <li><a href="#closure-stakeholders" class="toc-link">Stakeholder Management</a></li>
+                <li><a href="#closure-risks" class="toc-link">Risk & Issue Summary</a></li>
+                <li><a href="#closure-well" class="toc-link">What Went Well</a></li>
+                <li><a href="#closure-didnt" class="toc-link">What Didn't Go Well</a></li>
+                <li><a href="#closure-differently" class="toc-link">What Would You Do Differently</a></li>
+                <li><a href="#closure-lessons" class="toc-link">Lessons Learned</a></li>
+                <li><a href="#closure-takeaways" class="toc-link">Key Takeaways</a></li>
+                <li><a href="#closure-signoff" class="toc-link">Formal Sign-Off</a></li>
+                <li><a href="#closure-recognition" class="toc-link">Recognition</a></li>
+                <li><a href="#closure-next" class="toc-link">What's Next</a></li>
             </ul>
             <ul class="toc-list" id="toc-star" style="display: none;">
                 <li><a href="#star-overview" class="toc-link">STAR Stories Overview</a></li>
@@ -2646,13 +2709,323 @@
         </div>
 
         <div id="closure-content" class="category-content">
-            <section class="section" id="closure-overview">
+            <section class="section" id="closure-info">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <h2>Project Closure Document</h2>
+                    <h2>1. Project Information</h2>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
-                    <p>Project Closure Document content coming soon...</p>
+                    <div class="status-header">
+                        <h3>Personal Development Portfolio: UX/UI Design Project</h3>
+                        <div class="status-info">
+                            <div class="status-info-item">
+                                <strong>Project Manager:</strong> Jasmine Carvalho
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Project Description</h3>
+                    <p>This project involved a comprehensive UX design cycle to identify and address usability issues affecting CSULA students who currently use the GETmobile app. Through my research, iterative design, and usability testing, I developed and created a high-fidelity prototype with a navigation system that improved task efficiency in user testing. This work improved the app's functionality and improved student satisfaction.</p>
+
+                    <h3>Project Closure Type</h3>
+                    <span class="closure-badge">✅ Normal Closure - Project completed successfully</span>
+
+                    <h3>Closing Summary</h3>
+                    <p>This project met its goal of developing an understanding of UX/UI design by completing a full design cycle to solve a real-world usability problem in the GETmobile app.</p>
+
+                    <div class="highlight-box">
+                        <h4>Successes</h4>
+                        <ul>
+                            <li><strong>Valid Problem and Solution:</strong> From user research, I was able to accurately identify student issues with the app, such as navigation challenges, performance issues, and cluttered layout, which was then later confirmed by an ASI representative. The problems being validated highlight the importance of starting your project by conducting thorough research.</li>
+                            <li><strong>Deliverables:</strong> The project was then developed into an interactive prototype that addressed the issues, as well as connected to a professional portfolio case study documenting the process of creating the high-fidelity prototype.</li>
+                            <li><strong>Stakeholder Engagement:</strong> Engaging with an ASI representative provided valuable real-world insight into stakeholder feedback and highlighted the importance of aligning user needs with organizational needs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h4>Challenge</h4>
+                        <p>The most significant challenge was user participation. Recruiting peers and classmates for the survey and the testing part required me to be persistent and reach out to them. This experience highlighted one of the challenging aspects of UX work: obtaining meaningful user feedback to inform your final result.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="closure-deliverables">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>2. Deliverables Summary</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="table-container">
+                        <table class="budget-table">
+                            <thead>
+                                <tr>
+                                    <th>Deliverable Name</th>
+                                    <th>Definition of Done</th>
+                                    <th>Actual Progress</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Project Brief & Problem Statement</strong></td>
+                                    <td>Conducting a survey and data analysis to produce a one-page brief with a problem statement regarding the GETmobile app.</td>
+                                    <td>Survey completed (10 responses). Top 3 issues analyzed and narrowed down to one. Brief finalized and exported to PDF.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Current User Map</strong></td>
+                                    <td>A visual journey map created through FigJam documenting user steps, challenges, and screenshots.</td>
+                                    <td>App flow was documented with annotations. Journey map created and exported.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Prototype</strong></td>
+                                    <td>Interactive high-fidelity prototype on Figma with wireframes and a solution.</td>
+                                    <td>An interactive prototype with improved navigation has been built.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Test Report</strong></td>
+                                    <td>Report from usability tests, including findings, notes, and a page summary.</td>
+                                    <td>The usability test was conducted with scripts. Observations were written down and summarized. Feedback was documented.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ASI Engagement</strong></td>
+                                    <td>Contact an ASI representative and present my findings and prototypes, then request their feedback.</td>
+                                    <td>Contact has been made, and I have provided my conclusions. Feedback was also given and documented for the portfolio.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Portfolio</strong></td>
+                                    <td>Public case study page with all deliverables, and prototype link.</td>
+                                    <td>The portfolio page is responsive, with all information added. The page is public to access.</td>
+                                    <td>🟢 Green</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="closure-changes">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>3. Change Log</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="table-container">
+                        <table class="status-table">
+                            <thead>
+                                <tr>
+                                    <th>Change No</th>
+                                    <th>Change Date</th>
+                                    <th>Change</th>
+                                    <th>Reason for Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Week 11 (Oct 27, 2025)</td>
+                                    <td>Added a new deliverable, Deliverable 5: ASI Engagement. The deliverable includes preparing a project summary, prototype, and questions for ASI, reaching out, and documenting all feedback for attempts.</td>
+                                    <td>Direct feedback from the professor to enhance the project's quality.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="closure-performance">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>4. Performance Analysis</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <h3>4.1 Budget Performance</h3>
+                    <p>No spending was required during the project.</p>
+
+                    <h3>4.2 Schedule Performance</h3>
+                    <p>I completed my project on time. However, since adding Deliverable 5, there were some time constraints, which made me feel stressed and delayed the project's completion beyond the timeline I had initially intended.</p>
+                </div>
+            </section>
+
+            <section class="section" id="closure-stakeholders">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>5. Stakeholder Management</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>I engaged with users, instructors, and other stakeholders through either Discord or Outlook. Some valuable feedback I received was from the professor, who suggested adding a new deliverable to ensure I gained valuable feedback directly from ASI, which I did.</p>
+                </div>
+            </section>
+
+            <section class="section" id="closure-risks">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>6. Risk and Issue Summary</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>The project risks included an increase in workload and a potential delay in the timeline. The scope expanded midway through the project with the addition of a deliverable, which required interaction with a stakeholder (ASI), coinciding with deadlines for other courses. This created a risk of feeling overwhelmed and compromising the project's quality, as well as completing the deliverables on time.</p>
+                </div>
+            </section>
+
+            <section class="section" id="closure-well">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>7. What Went Well?</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>Weekly team check-ins kept everyone on track and focused on their project</li>
+                        <li>Using SmartSheet allows me to view the progress and deadlines</li>
+                        <li>Scheduling breaks by watching a movie helped manage my stress and be productive throughout the project</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="closure-didnt">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>8. What Didn't Go Well?</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>Underestimated the amount of work I needed to put into this project</li>
+                        <li>Balancing coursework from other classes with different deadlines created stress and pressure</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="closure-differently">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>9. What Would You Do Differently?</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <ul>
+                        <li>Add on deliverable 5 earlier in the process to give me an idea of how long the project will take to complete</li>
+                        <li>Map out all project deadlines, including those for this class and other classes, to effectively balance my workload and stay on schedule</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="closure-lessons">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>10. Lessons Learned Register</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="table-container">
+                        <table class="lessons-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>SDLC</th>
+                                    <th>What was the problem?</th>
+                                    <th>What was the consequence?</th>
+                                    <th>Lesson Learned Advice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Week 7</td>
+                                    <td>Initiation</td>
+                                    <td>Identified a risk of low survey response rate during the research phase</td>
+                                    <td>Required a planned migration strategy using app store reviews to ensure data could be collected.</td>
+                                    <td>Document mitigation plans for risks. It will prevent your scope from going into a disaster.</td>
+                                </tr>
+                                <tr>
+                                    <td>Week 9</td>
+                                    <td>Execution</td>
+                                    <td>Required balancing other deliverables, such as completing the User Map while starting the prototype.</td>
+                                    <td>It was necessary to push through it, which caused me to lose focus for a moment.</td>
+                                    <td>When deliverables overlap, it can be challenging to manage your time effectively. Next time, ensure you have a plan in place whenever an overlap occurs.</td>
+                                </tr>
+                                <tr>
+                                    <td>Week 11</td>
+                                    <td>Monitoring</td>
+                                    <td>A new deliverable was added on (ASI Engagement) based on the professor's feedback.</td>
+                                    <td>The scope expanded, and health shifted to "At Risk" due to a new deliverable.</td>
+                                    <td>When a new addition occurs, immediately review the timeline and do not assume that it will be okay.</td>
+                                </tr>
+                                <tr>
+                                    <td>Week 11</td>
+                                    <td>Execution</td>
+                                    <td>Deliverable five became dependent on the ASI representative's schedule and response.</td>
+                                    <td>This created uncertainty. The mitigation was to document attempted contact as a way to say my deliverable was completed.</td>
+                                    <td>For any deliverables that require reaching out to a stakeholder, understand and define what determines that the deliverable is completed from the outset.</td>
+                                </tr>
+                                <tr>
+                                    <td>Week 12-13</td>
+                                    <td>Closing</td>
+                                    <td>The final portfolio required compiling all prior work into a single portfolio page.</td>
+                                    <td>This phase required me to review and refine my documents, as well as decide what to include on the portfolio page.</td>
+                                    <td>Create a draft for the portfolio case study early in the process to avoid stress.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="closure-takeaways">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>11. Key Takeaways for Future Projects</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <ul>
+                            <li><strong>Manage scopes more effectively:</strong> Create plans outlining how scope changes will be handled.</li>
+                            <li><strong>Engage stakeholders early:</strong> Identify and schedule with user representatives early on to avoid last-minute changes.</li>
+                            <li><strong>Document as you go:</strong> Start documenting the case study report early, rather than waiting until the end, when creating a portfolio page.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="closure-signoff">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>12. Formal Sign-Off</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <ul class="signoff-list">
+                        <li><strong>Project Manager:</strong> Jasmine Carvalho</li>
+                        <li><strong>Team Member:</strong> Elaine Li</li>
+                        <li><strong>Team Member:</strong> Samuel Avila-Varela</li>
+                        <li><strong>Team Member:</strong> David Cabral Dominguez</li>
+                        <li><strong>Team Member:</strong> Everett Clayton-Skinner</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" id="closure-recognition">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>13. Recognition</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p>I would like to give thanks to my professor, peers, classmates, and the ASI representative for their contributions and collaboration on this project. Their feedback, participation, and insights were crucial to the development and success of this project.</p>
+                </div>
+            </section>
+
+            <section class="section" id="closure-next">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>14. What's Next</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <h4>Future Development Plans</h4>
+                        <p>This project provided me with a strong foundation in user-centered design. To build on this project and continue to develop my skills, I plan to:</p>
+                        <ul>
+                            <li>Expand on the prototype further and address other issues that students encountered</li>
+                            <li>Incorporate HTML into the UI components to have a better understanding of design implementation</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </div>
