@@ -824,6 +824,71 @@
             border-radius: 4px;
         }
 
+        .star-story {
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .star-story:hover {
+            border-color: #d4af37;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+        }
+
+        .star-header {
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .star-header h3 {
+            color: #1a1a1a;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .star-source {
+            color: #6b6b6b;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .star-prompt {
+            background: #fffef5;
+            border-left: 4px solid #d4af37;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #2d2d2d;
+        }
+
+        .star-component {
+            margin: 1.5rem 0;
+        }
+
+        .star-component h4 {
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .star-component h4:before {
+            content: "▸";
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .star-component p {
+            line-height: 1.8;
+            color: #2d2d2d;
+        }
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -908,7 +973,8 @@
                 <li><a href="#closure-next" class="toc-link">What's Next</a></li>
             </ul>
             <ul class="toc-list" id="toc-star" style="display: none;">
-                <li><a href="#star-overview" class="toc-link">STAR Stories Overview</a></li>
+                <li><a href="#star-story1" class="toc-link">Story 1: Mid-Project Scope Change</a></li>
+                <li><a href="#star-story2" class="toc-link">Story 2: Presenting Stakeholder Feedback</a></li>
             </ul>
         </aside>
 
@@ -3051,13 +3117,81 @@
         </div>
 
         <div id="star-content" class="category-content">
-            <section class="section" id="star-overview">
+            <section class="section" id="star-story1">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <h2>STAR Stories</h2>
+                    <h2>Story 1: Mid-Project Scope Change with Stewardship</h2>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
-                    <p>STAR Stories content coming soon...</p>
+                    <div class="star-story">
+                        <div class="star-header">
+                            <h3>Mid-Project Scope Change with Stewardship</h3>
+                            <p class="star-source">Source: Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                        </div>
+
+                        <div class="star-prompt">
+                            <strong>Reflection Prompt:</strong> Am I being transparent with stakeholders about the risks, costs, and trade-offs?
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Situation</h4>
+                            <p>In Week 11, my professor suggested adding a new deliverable that required interacting with an ASI representative for feedback, which caused me to create a new deliverable late into the project timeline while I was finalizing the prototype. My initial reaction was resistance since I was stressed about the timeline and balancing other coursework.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Task</h4>
+                            <p>I needed to assess my concerns, address the professor's feedback, and incorporate this new deliverable without affecting the quality of the project.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Action</h4>
+                            <p>I emailed my professor for a one-on-one meeting and I was able to arrange it during her office hours. There, I was able to express my concerns about adding in a new deliverable but I was also able to listen to her professional opinion. After understanding that it was important to incorporate interacting with an ASI representative, I was able to understand and allow to have some changes to the project. I fixed my plans in SmartSheet and arrange my schedule to avoid feeling overwhelmed.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Result</h4>
+                            <p>The meeting encouraged me to change my perspective from seeing the change as an issue to seeing it as a valuable addition to the project. This experience taught me that true stewardship involves having respectful discussions with stakeholders, not only managing tasks but also my emotions and expectations and allowing to change challenges into opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="star-story2">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>Story 2: Presenting Stakeholder Feedback</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="star-story">
+                        <div class="star-header">
+                            <h3>Presenting Stakeholder Feedback</h3>
+                            <p class="star-source">Source: Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                        </div>
+
+                        <div class="star-prompt">
+                            <strong>Reflection Prompt:</strong> Would I make the same decision if my reputation was on the line?
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Situation</h4>
+                            <p>When finalizing my portfolio, I had to decide how to present the ASI stakeholder feedback, which validated my overall case study.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Task</h4>
+                            <p>I needed to represent this interaction as honest as possible to show credibility without improperly their involvement to it.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Action</h4>
+                            <p>I prepared a document for ASI, including a project summary, survey findings, and a link to the interactive prototype. I then emailed this document to an ASI representative with questions that were designed to validate if the main issues within the GETmobile app did in fact resonated with them and if the solution aligned with the university and student needs.</p>
+                        </div>
+
+                        <div class="star-component">
+                            <h4>Result</h4>
+                            <p>Presenting myself honest from the start allowed me to build a creditable study reinforcing that thoroughly communicating with one another allows to build trust and receive honest feedback.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
