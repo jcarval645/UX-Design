@@ -824,69 +824,64 @@
             border-radius: 4px;
         }
 
-        .star-story {
+        .star-card {
             background: white;
             border: 2px solid #e5e5e5;
             border-radius: 12px;
             padding: 2rem;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        .star-story:hover {
+        .star-card:hover {
             border-color: #d4af37;
             box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
         }
 
         .star-header {
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 1rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
             margin-bottom: 1.5rem;
         }
 
-        .star-header h3 {
-            color: #1a1a1a;
-            font-size: 1.5rem;
+        .star-header h4 {
+            color: #d4af37;
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .star-source {
-            color: #6b6b6b;
-            font-style: italic;
+        .star-header p {
+            color: #e5e5e5;
             font-size: 0.95rem;
+            margin: 0;
         }
 
-        .star-prompt {
-            background: #fffef5;
-            border-left: 4px solid #d4af37;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-style: italic;
-            color: #2d2d2d;
-        }
-
-        .star-component {
+        .star-section {
             margin: 1.5rem 0;
         }
 
-        .star-component h4 {
+        .star-section h5 {
             color: #1a1a1a;
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .star-component h4:before {
+        .star-section h5:before {
             content: "▸";
             color: #d4af37;
             font-weight: bold;
         }
 
-        .star-component p {
-            line-height: 1.8;
+        .star-section p {
             color: #2d2d2d;
+            line-height: 1.8;
         }
 
         @media (max-width: 768px) {
@@ -973,8 +968,11 @@
                 <li><a href="#closure-next" class="toc-link">What's Next</a></li>
             </ul>
             <ul class="toc-list" id="toc-star" style="display: none;">
-                <li><a href="#star-story1" class="toc-link">Story 1: Mid-Project Scope Change</a></li>
-                <li><a href="#star-story2" class="toc-link">Story 2: Presenting Stakeholder Feedback</a></li>
+                <li><a href="#star-1" class="toc-link">Mid-Project Scope Change</a></li>
+                <li><a href="#star-2" class="toc-link">Presenting Stakeholder Feedback</a></li>
+                <li><a href="#star-3" class="toc-link">Leading Without Authority</a></li>
+                <li><a href="#star-4" class="toc-link">Building a Safe Plan</a></li>
+                <li><a href="#star-5" class="toc-link">Navigating Uncertainty</a></li>
             </ul>
         </aside>
 
@@ -3117,79 +3115,181 @@
         </div>
 
         <div id="star-content" class="category-content">
-            <section class="section" id="star-story1">
+            <section class="section" id="star-1">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <h2>Story 1: Mid-Project Scope Change with Stewardship</h2>
+                    <h2>⭐ STAR Story 1: Mid-Project Scope Change with Stewardship</h2>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
-                    <div class="star-story">
+                    <div class="star-card">
                         <div class="star-header">
-                            <h3>Mid-Project Scope Change with Stewardship</h3>
-                            <p class="star-source">Source: Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                            <h4>Story Title: Mid-Project Scope Change with Stewardship</h4>
+                            <p><strong>Source:</strong> Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                            <p><strong>Prompt:</strong> Am I being transparent with stakeholders about the risks, costs, and trade-offs?</p>
                         </div>
 
-                        <div class="star-prompt">
-                            <strong>Reflection Prompt:</strong> Am I being transparent with stakeholders about the risks, costs, and trade-offs?
+                        <div class="star-section">
+                            <h5>Situation</h5>
+                            <p>In Week 11, my professor suggested adding a new deliverable that required interacting with an ASI representative for feedback, which caused me to create a new deliverable late into the project timeline while I was finalizing the prototype. My initial reaction was one of resistance, as I was stressed about the timeline and balancing other coursework.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Situation</h4>
-                            <p>In Week 11, my professor suggested adding a new deliverable that required interacting with an ASI representative for feedback, which caused me to create a new deliverable late into the project timeline while I was finalizing the prototype. My initial reaction was resistance since I was stressed about the timeline and balancing other coursework.</p>
+                        <div class="star-section">
+                            <h5>Task</h5>
+                            <p>I needed to assess my concerns, address the professor's feedback, and incorporate the new deliverable without compromising the project's quality.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Task</h4>
-                            <p>I needed to assess my concerns, address the professor's feedback, and incorporate this new deliverable without affecting the quality of the project.</p>
+                        <div class="star-section">
+                            <h5>Action</h5>
+                            <p>I emailed my professor to arrange a one-on-one meeting, which I successfully scheduled during her office hours. There, I expressed my concerns about adding a new deliverable, and I also listened to her professional opinion. After understanding the importance of interacting with an ASI representative, I was able to understand and accept some changes to the project. I fixed my plans in SmartSheet and arranged my schedule to avoid feeling overwhelmed.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Action</h4>
-                            <p>I emailed my professor for a one-on-one meeting and I was able to arrange it during her office hours. There, I was able to express my concerns about adding in a new deliverable but I was also able to listen to her professional opinion. After understanding that it was important to incorporate interacting with an ASI representative, I was able to understand and allow to have some changes to the project. I fixed my plans in SmartSheet and arrange my schedule to avoid feeling overwhelmed.</p>
-                        </div>
-
-                        <div class="star-component">
-                            <h4>Result</h4>
-                            <p>The meeting encouraged me to change my perspective from seeing the change as an issue to seeing it as a valuable addition to the project. This experience taught me that true stewardship involves having respectful discussions with stakeholders, not only managing tasks but also my emotions and expectations and allowing to change challenges into opportunities.</p>
+                        <div class="star-section">
+                            <h5>Result</h5>
+                            <p>The meeting encouraged me to change my perspective from seeing the change as an issue to seeing it as a valuable addition to the project. This experience taught me that faithful stewardship involves having respectful discussions with stakeholders, not only managing tasks but also managing my emotions and expectations, and allowing challenges to be transformed into opportunities for growth.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="section" id="star-story2">
+            <section class="section" id="star-2">
                 <div class="section-header" onclick="toggleSection(this)">
-                    <h2>Story 2: Presenting Stakeholder Feedback</h2>
+                    <h2>⭐ STAR Story 2: Presenting Stakeholder Feedback</h2>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
-                    <div class="star-story">
+                    <div class="star-card">
                         <div class="star-header">
-                            <h3>Presenting Stakeholder Feedback</h3>
-                            <p class="star-source">Source: Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                            <h4>Story Title: Presenting Stakeholder Feedback</h4>
+                            <p><strong>Source:</strong> Project Presentation - Be a Diligent, Respectful, and Caring Steward</p>
+                            <p><strong>Prompt:</strong> Would I make the same decision if my reputation were on the line?</p>
                         </div>
 
-                        <div class="star-prompt">
-                            <strong>Reflection Prompt:</strong> Would I make the same decision if my reputation was on the line?
-                        </div>
-
-                        <div class="star-component">
-                            <h4>Situation</h4>
+                        <div class="star-section">
+                            <h5>Situation</h5>
                             <p>When finalizing my portfolio, I had to decide how to present the ASI stakeholder feedback, which validated my overall case study.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Task</h4>
-                            <p>I needed to represent this interaction as honest as possible to show credibility without improperly their involvement to it.</p>
+                        <div class="star-section">
+                            <h5>Task</h5>
+                            <p>I needed to represent this interaction as honestly as possible to show credibility without improperly involving them in it.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Action</h4>
-                            <p>I prepared a document for ASI, including a project summary, survey findings, and a link to the interactive prototype. I then emailed this document to an ASI representative with questions that were designed to validate if the main issues within the GETmobile app did in fact resonated with them and if the solution aligned with the university and student needs.</p>
+                        <div class="star-section">
+                            <h5>Action</h5>
+                            <p>I prepared a document for ASI, including a project summary, survey findings, and a link to the interactive prototype. I then emailed this document to an ASI representative, posing questions designed to validate whether the main issues within the GETmobile app resonated with them and whether the proposed solution aligned with the university's and students' needs.</p>
                         </div>
 
-                        <div class="star-component">
-                            <h4>Result</h4>
-                            <p>Presenting myself honest from the start allowed me to build a creditable study reinforcing that thoroughly communicating with one another allows to build trust and receive honest feedback.</p>
+                        <div class="star-section">
+                            <h5>Result</h5>
+                            <p>Presenting myself honestly from the start allowed me to build a credible study, reinforcing that thoroughly communicating with one another enables the building of trust and the receipt of honest feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="star-3">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>⭐ STAR Story 3: Leading Without Authority</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="star-card">
+                        <div class="star-header">
+                            <h4>Story Title: Leading Without Authority</h4>
+                            <p><strong>Source:</strong> PMI Principle 6 - Leading Without Authority and Inspiring Action</p>
+                            <p><strong>Prompt:</strong> When have I demonstrated leadership without having formal authority?</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Situation</h5>
+                            <p>For my CIS 4730-01 class, which covered the essentials of network security, my group and I were assigned two presentations (UTM comparison and TCPdump analysis) with no designated leader, causing a delay in starting them since no one was sure where to start.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Task</h5>
+                            <p>I needed to create a structure for the team so we could discuss and explain these topics.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Action</h5>
+                            <p>I initiated a conversation with my group members to determine the topics we should present, created a shared slide template, and maintained communication with them to ensure we are all on the same page.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Result</h5>
+                            <p>We successfully delivered a cohesive presentation. From that, I learned that leadership can be easily brought out by communicating and clarifying with your team members.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="star-4">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>⭐ STAR Story 4: Building a Safe Plan</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="star-card">
+                        <div class="star-header">
+                            <h4>Story Title: Building a Safe Plan</h4>
+                            <p><strong>Source:</strong> PMI Principle 5 - Understanding the Interconnected Nature of Projects</p>
+                            <p><strong>Prompt:</strong> If this component fails, what else fails? What are the cascading effects?</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Situation</h5>
+                            <p>My GETmobile UI/UI redesign depended on survey data to identify the core problem. If the responses were low, all of my other deliverables, such as the user map, prototype, and testing, would not be valid.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Task</h5>
+                            <p>I needed to secure usable data.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Action</h5>
+                            <p>Recognizing this potential risk, I created a backup plan before sending out the survey, utilizing app store reviews as an alternative data source to ensure the project could proceed even if peer participation were limited.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Result</h5>
+                            <p>Having a backup plan reduced the risk of the entire project timeline. It demonstrated that thinking ahead of time means handling the critical issues before they become problems.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="star-5">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2>⭐ STAR Story 5: Navigating an Unpredictable Bus Commute</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="star-card">
+                        <div class="star-header">
+                            <h4>Story Title: Navigating an Unpredictable Bus Commute</h4>
+                            <p><strong>Source:</strong> PMI Principle 9 - Making Progress Despite Uncertainty and Ambiguity</p>
+                            <p><strong>Prompt:</strong> What feedback loops can I create to learn faster?</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Situation</h5>
+                            <p>I commute to campus by the Los Angeles Metro Bus System. It can be inconsistent when you include some unpredictable factors, such as traffic, weather, bus delays, and personal errands, which sometimes make me arrive at campus late or miss class.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Task</h5>
+                            <p>I needed to create a system to ensure I arrived at class on time, despite unpredictable factors.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Action</h5>
+                            <p>I implemented daily feedback loops, taking notes on what caused the delay and adjusting as needed, such as leaving earlier. I then simplified my routine to reduce stress.</p>
+                        </div>
+
+                        <div class="star-section">
+                            <h5>Result</h5>
+                            <p>I was able to develop a flexible schedule with various times to prevent being late or missing class, and to reduce stress. This feedback loop process enabled me to respond to uncertainty by observing and adapting, rather than sticking to a single plan.</p>
                         </div>
                     </div>
                 </div>
